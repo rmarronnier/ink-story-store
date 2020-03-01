@@ -1,24 +1,44 @@
 import Vue from "vue";
+//import store from "@/store";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "@/views/Home.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home
   },
+  // {
+  //   path: "/choose-your-story",
+  //   name: "menu",
+  //   component: StoryMenu
+  // },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: "/story",
+    name: "story",
+    // beforeRouteEnter(to, from, next) {
+    //   if (store.getters.currentStory == null) {
+    //     console.log("I should go home");
+    //     next({ name: 'home' });
+    //   }
+    // },
+    // beforeRouteUpdate(to, from, next) {
+    //   if (store.getters.currentStory == null) {
+    //     console.log("I should go home");
+    //     next({ name: 'home' });
+    //   }
+    // },
+    beforeRouteLeave() {
+      //this.$store.dispatch("saveCurrentStoryState");
+      this.$modal.hide("ask-for-payment");
+    },
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
+      import(/* webpackChunkName: "story" */ "../views/Story.vue")
+  },
+  { path: "*", redirect: "/" }
 ];
 
 const router = new VueRouter({

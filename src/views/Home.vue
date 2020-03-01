@@ -1,18 +1,34 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="home">
+    <!-- <img alt="Lise Marcy logo" src="@/assets/logo.svg" /> -->
+    <StoryMenu />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import StoryMenu from "@/components/StoryMenu.vue";
 export default {
-  name: "Home",
+  name: "home",
   components: {
-    HelloWorld
+    StoryMenu
+  },
+  mounted() {
+    let gumroadScript = document.createElement("script");
+    gumroadScript.setAttribute("src", "https://gumroad.com/js/gumroad.js");
+    document.head.appendChild(gumroadScript);
+
+    this.$modal.hide("ask-for-payment");
   }
 };
 </script>
+<style lang="scss" scoped>
+#home {
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+</style>

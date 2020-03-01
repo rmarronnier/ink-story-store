@@ -1,32 +1,47 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <!-- Modals -->
+    <StartOverConfirmation />
+    <AskForPayment />
+    <router-view id="view" />
   </div>
 </template>
 
+
+<script>
+import StartOverConfirmation from "@/components/story/modals/StartOverConfirmation.vue";
+export default {
+  components: {
+    StartOverConfirmation
+  },
+  mounted() {
+    this.$store.dispatch("downloadStories");
+    this.$store.dispatch("downloadInkEngine");
+  }
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+body {
+  margin: 0;
+  //height: 100vh;
+  //width: 100vw;
+  overscroll-behavior-y: contain; // TODO ?  : https://www.npmjs.com/package/@wessberg/polyfiller
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+#app {
+  overflow-x: hidden;
+  //height: 100vh;
+  //width: 100vw;
+  max-height: 100vh;
+  max-width: 100vw;
+  font-size: calc(1.2vw + 1.2vh + 4vmin);
+  text-align: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: rgba(0, 0, 0, 0.5);
+  background-color: #f7f7f7;
 }
 </style>
