@@ -12,6 +12,12 @@
         src="backgroundVideoURL"
       ></video>
     </transition>
+    <audio
+      v-if="this.$store.getters.backgroundSound != null"
+      autoplay
+      loop
+      :src="backgroundSoundURL"
+    ></audio>
   </div>
 </template>
 
@@ -29,6 +35,14 @@ export default {
         picture = this.$store.getters.backgroundImage;
       }
       return require(`@/assets/stories/${storyId}/images/backgrounds/${picture}`);
+    },
+    backgroundSoundURL() {
+      let storyId = this.$store.getters.storyId;
+      let sound = "";
+      if (this.$store.getters.backgroundSound != null) {
+        sound = this.$store.getters.backgroundSound;
+      }
+      return require(`@/assets/stories/${storyId}/sounds/backgrounds/${sound}`);
     },
     backgroundVideoURL() {
       let storyId = this.$store.getters.defaultStoryId;

@@ -4,12 +4,6 @@
     <TextBox v-if="hasText" />
     <InputModal v-if="inputModalData" />
     <Cover v-if="cover" />
-    <audio
-      v-if="backgroundSound"
-      autoplay
-      loop
-      :src="require(storyAssetsURL + backgroundSoundURL)"
-    ></audio>
     <InGameMenu class="in-game-menu" />
   </section>
 </template>

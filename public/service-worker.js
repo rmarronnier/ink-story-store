@@ -34,3 +34,4 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerRoute(/\/img/, new workbox.strategies.CacheFirst(), 'GET');
+workbox.routing.registerRoute(/\/media/, new workbox.strategies.CacheFirst(), 'GET');
