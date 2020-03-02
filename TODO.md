@@ -15,7 +15,7 @@
 # Get number of steps from story and display a progression bar in story menu
 # refactor stories store
 # make the gumroad payment a vuex plugin
-# Make the story component a npm package
+# Make the story component a npm package or bit.dev
 # Add notifications (push notification + toasters)
 # bunnyCDN assets linking
 # animation / transition configurable in externalscss (/assets)

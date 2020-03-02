@@ -11,7 +11,7 @@ module.exports = {
     // configure the workbox plugin
     workboxPluginMode: "InjectManifest",
     workboxOptions: {
-      swSrc: "public/service-worker.js",
+      swSrc: "public/service-worker.js"
       // runtimeCaching: [
       //   {
       //     // Match any request that ends with .png, .jpg, .jpeg or .svg.

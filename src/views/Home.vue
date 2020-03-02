@@ -1,16 +1,24 @@
 <template>
   <div id="home">
     <!-- <img alt="Lise Marcy logo" src="@/assets/logo.svg" /> -->
-    <StoryMenu />
+    <StoryMenu v-if="assetsCached" />
+    <LoadingScreen v-else />
   </div>
 </template>
 
 <script>
 import StoryMenu from "@/components/StoryMenu.vue";
+import LoadingScreen from "@/components/LoadingScreen.vue";
 export default {
   name: "home",
   components: {
-    StoryMenu
+    StoryMenu,
+    LoadingScreen
+  },
+  computed: {
+    assetsCached() {
+      return this.$store.getters.allAssetsCached;
+    }
   },
   mounted() {
     let gumroadScript = document.createElement("script");

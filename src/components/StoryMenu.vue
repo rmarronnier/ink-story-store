@@ -9,9 +9,7 @@
     >
       <h2>{{ storyTitle(json) }}</h2>
       <article>{{ teaserText(json) }}</article>
-      <button v-if="storyReady" @click="choose(storyId)">
-        Lire {{ storyId }}
-      </button>
+      <button @click="choose(storyId)">Lire {{ storyId }}</button>
     </section>
   </main>
 </template>
@@ -37,9 +35,6 @@ export default {
   computed: {
     stories() {
       return this.$store.getters.downloaded;
-    },
-    storyReady() {
-      return this.$store.getters.allAssetsCached;
     }
   },
   methods: {
