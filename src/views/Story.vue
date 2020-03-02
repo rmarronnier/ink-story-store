@@ -4,12 +4,7 @@
     <TextBox v-if="hasText" />
     <InputModal v-if="inputModalData" />
     <Cover v-if="cover" />
-    <audio
-      v-if="backgroundSound"
-      autoplay
-      loop
-      :src="require(storyAssetsURL + backgroundSoundURL)"
-    ></audio>
+    <audio v-if="backgroundSound" autoplay loop :src="require(storyAssetsURL + backgroundSoundURL)"></audio>
     <InGameMenu class="in-game-menu" />
   </section>
 </template>
@@ -39,7 +34,7 @@ export default {
         this.$store.dispatch("downloadStories");
         this.$store.dispatch("downloadInkEngine");
       }
-      this.$store.dispatch("changeStory", "events-tome-1"); // dirty dirty fix. Should use a default value instead or lastStoryRead
+      //this.$store.dispatch("changeStory", "events-tome-1"); // dirty dirty fix. Should use a default value instead or lastStoryRead
       // console.log("We should really go home");
       // console.log(this.$store.getters.storyId);
       // this.$router.push("/");
