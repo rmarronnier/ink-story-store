@@ -3,6 +3,7 @@ export default {
     appTitle: process.env.VUE_APP_TITLE,
     appShortTitle: process.env.VUE_APP_SHORT_TITLE,
     networkOnLine: true,
+    allAssetsCached: false,
     SWRegistrationForNewContent: null,
     showAddToHomeScreenModalForApple: false,
     refreshingApp: false,
@@ -10,6 +11,7 @@ export default {
   },
   mutations: {
     setNetworkOnline: (state, value) => (state.networkOnLine = value),
+    allAssetsCached: (state) => (state.allAssetsCached = true),
     setSWRegistrationForNewContent: (state, value) =>
       (state.SWRegistrationForNewContent = value),
     setShowAddToHomeScreenModalForApple: (state, value) =>
@@ -44,6 +46,7 @@ export default {
   },
   getters: {
     newContentAvailable: state => state.SWRegistrationForNewContent != null,
-    networkOnLine: state => state.networkOnLine
+    networkOnLine: state => state.networkOnLine,
+    allAssetsCached: state => state.allAssetsCached
   }
 };

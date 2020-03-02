@@ -2,7 +2,11 @@
   <div class="in-game-menu">
     <GumroadOverlayButton id="gumroad" v-if="showGumroadButton" />
     <button @click="askConfirmation">
-      <img width="36px" src="@/assets/reset-story-24px.svg" alt="Recommencer l'histoire" />
+      <img
+        width="36px"
+        src="@/assets/reset-story-24px.svg"
+        alt="Recommencer l'histoire"
+      />
       Recommencer
     </button>
     <button @click="goHome">

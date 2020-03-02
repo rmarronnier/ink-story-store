@@ -7,7 +7,6 @@
   </div>
 </template>
 
-
 <script>
 import StartOverConfirmation from "@/components/story/modals/StartOverConfirmation.vue";
 export default {
