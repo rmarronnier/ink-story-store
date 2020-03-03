@@ -7,6 +7,7 @@
     <input
       autofocus
       name="input1"
+      maxlength="10"
       type="text"
       v-model="inputValue"
       :placeholder="defaultValue"
@@ -34,6 +35,11 @@ export default {
   },
   methods: {
     submitInput(value, variableName) {
+      value = value
+        .trim()
+        .replace(">>>", "")
+        .replace("!!!", "")
+        .replace(":::", ""); // DIRTY sanitizer
       if (value == null) {
         value = this.$store.state.stories.currentStory.variablesState[
           this.input.variable
