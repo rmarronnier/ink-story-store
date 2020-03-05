@@ -1,9 +1,8 @@
 import Vue from "vue";
-//import store from "@/store";
+import store from "@/store";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
 import AppData from "@/assets/app.json";
-
 
 Vue.use(VueRouter);
 
@@ -58,11 +57,27 @@ const router = new VueRouter({
 });
 /* eslint-disable no-unused-vars */
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title;
-  document
-    .querySelector('meta[name="description"]')
-    .setAttribute("content", to.meta.description);
-  next();
+  if (to.name != "story") {
+    document.title = to.meta.title;
+    document
+      .querySelector('meta[name="description"]')
+      .setAttribute("content", to.meta.description);
+    next();
+  }
+  else {
+    let storyTitle = "";
+    let storyDescription = "";
+    if (store.getters.currentStory != null) {
+      storyTitle = store.getters.storyTitle;
+      storyDescription = store.getters.storyDescription;
+    }
+    document.title = storyTitle;
+    document
+      .querySelector('meta[name="description"]')
+      .setAttribute("content", storyDescription);
+    next();
+  }
+
 });
 
 export default router;
