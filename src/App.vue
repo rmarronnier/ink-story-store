@@ -9,7 +9,6 @@
 
 <script>
 import StartOverConfirmation from "@/components/story/modals/StartOverConfirmation.vue";
-//import AskForPayment from "@/components/payment/modals/AskForPayment.vue";
 export default {
   components: {
     StartOverConfirmation

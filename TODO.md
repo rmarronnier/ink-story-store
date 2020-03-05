@@ -21,4 +21,5 @@
 # ~~ set up preloading story assets before allowing to load it ~~
 # get rid of firebase dependendcy (by calling function through https endpoint)
 # Autoplay mode
-# scrolling down instead of clicking
+# scrolling down instead of clicking to continue story
+# Create a modals component englobing all modals

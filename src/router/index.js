@@ -2,6 +2,8 @@ import Vue from "vue";
 //import store from "@/store";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
+import AppData from "@/assets/app.json";
+
 
 Vue.use(VueRouter);
 
@@ -11,8 +13,8 @@ const routes = [
     name: "home",
     component: Home,
     meta: {
-      title: "application-title",
-      description: "application description"
+      title: AppData.longName,
+      description: AppData.description
     }
   },
   // {
