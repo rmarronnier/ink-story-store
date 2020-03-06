@@ -35,11 +35,6 @@ export default {
   },
   methods: {
     submitInput(value, variableName) {
-      value = value
-        .trim()
-        .replace(">>>", "")
-        .replace("!!!", "")
-        .replace(":::", ""); // DIRTY sanitizer
       if (value == null) {
         value = this.$store.state.stories.currentStory.variablesState[
           this.input.variable
@@ -48,6 +43,10 @@ export default {
       this.$store.dispatch("submitInput", {
         variable: variableName,
         value: value
+          .trim()
+          .replace(">>>", "")
+          .replace("!!!", "")
+          .replace(":::", "") // DIRTY sanitizer
       });
       this.inputValue = null;
     }
