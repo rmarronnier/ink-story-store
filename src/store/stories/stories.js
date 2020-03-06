@@ -175,12 +175,9 @@ export default {
     storyAssetsURL: state => "/assets/stories/" + state.storyId,
     gumroadPermalink: state =>
       getGlobalTagValue(state.currentStory, "gumroad-permalink"),
-    storyAuthor: state =>
-      getGlobalTagValue(state.currentStory, "author"),
-    storyTitle: state =>
-      getGlobalTagValue(state.currentStory, "title"),
+    storyAuthor: state => getGlobalTagValue(state.currentStory, "author"),
+    storyTitle: state => getGlobalTagValue(state.currentStory, "title"),
     storyDescription: state =>
-      getGlobalTagValue(state.currentStory, "description"),
-
+      getGlobalTagValue(state.currentStory, "description")
   }
 };

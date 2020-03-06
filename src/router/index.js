@@ -63,8 +63,7 @@ router.beforeEach((to, from, next) => {
       .querySelector('meta[name="description"]')
       .setAttribute("content", to.meta.description);
     next();
-  }
-  else {
+  } else {
     let storyTitle = "";
     let storyDescription = "";
     if (store.getters.currentStory != null) {
@@ -77,7 +76,6 @@ router.beforeEach((to, from, next) => {
       .setAttribute("content", storyDescription);
     next();
   }
-
 });
 
 export default router;
