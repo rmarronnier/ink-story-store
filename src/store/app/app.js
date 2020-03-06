@@ -11,7 +11,7 @@ export default {
   },
   mutations: {
     setNetworkOnline: (state, value) => (state.networkOnLine = value),
-    allAssetsCached: state => (state.allAssetsCached = true),
+    allAssetsCached: (state, value) => (state.allAssetsCached = value),
     setSWRegistrationForNewContent: (state, value) =>
       (state.SWRegistrationForNewContent = value),
     setShowAddToHomeScreenModalForApple: (state, value) =>

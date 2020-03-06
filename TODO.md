@@ -1,5 +1,5 @@
-# Use .json in assets as a source to app / stories data (title, description, etc.)
-# dynamically generated meta-description + title // https://medium.com/@arieldi/pourquoi-et-comment-g%C3%A9rer-la-balise-title-et-la-meta-description-avec-vue-js-seo-71332be1e605
+# Use .json in assets as a source to app data (title, description, etc.)
+# remove firebase dependencies
 # /story route guard if ui is not ready (story not chosen)
 # refactor stories store
 # make the gumroad payment a vuex plugin / make a payment plugin => get rid of firebase dependency
@@ -17,6 +17,7 @@
 # Make the story component a npm package or bit.dev
 # Add notifications (push notification + toasters) - Add a thank you toaster after purchase
 # animation / transition configurable in external scss (/assets)
+# ~~ dynamically generated meta-description + title // https://medium.com/@arieldi/pourquoi-et-comment-g%C3%A9rer-la-balise-title-et-la-meta-description-avec-vue-js-seo-71332be1e605 ~~
 # ~~text input sanitizer + length limiter~~
 # ~~ set up preloading story assets before allowing to load it ~~
 # get rid of firebase dependendcy (by calling function through https endpoint)
