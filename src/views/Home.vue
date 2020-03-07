@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <!-- <img alt="Lise Marcy logo" src="@/assets/logo.svg" /> -->
+    <img alt="Lise Marcy logo" src="@/assets/logo.svg" />
     <StoryMenu v-if="assetsCached" />
     <LoadingScreen v-else />
   </div>
@@ -38,5 +38,6 @@ export default {
   width: 100%;
   display: block;
   text-align: center;
+  background-color: #493c50ff;
 }
 </style>

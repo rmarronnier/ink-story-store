@@ -24,3 +24,11 @@
 # Autoplay mode
 # scrolling down instead of clicking to continue story
 # Create a modals component englobing all modals
+
+## jumping height of text box
+## width issues sometimes with text box
+## Portrait layout not aligned
+## modals make over needed
+## Loading screen makeover needed (logo branding)
+## home page improvement (branding logo + footer)
+## Splashscreen for each story? => content (title, author, image ?)

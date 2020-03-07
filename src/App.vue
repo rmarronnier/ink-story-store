@@ -42,6 +42,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
   color: rgba(0, 0, 0, 0.5);
-  background-color: #f7f7f7;
+  //background-color: #f7f7f7;
+  background-color: #493c50ff;
 }
 </style>
