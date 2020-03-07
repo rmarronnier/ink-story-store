@@ -1,6 +1,19 @@
 // Inside vue.config.js
 module.exports = {
   // ...other vue-cli plugin options...
+  chainWebpack(config) {
+    config.module
+      .rule("md")
+      .test(/\.md/)
+      .use("vue-loader")
+      .loader("vue-loader")
+      .end()
+      .use("vue-markdown-loader")
+      .loader("vue-markdown-loader/lib/markdown-compiler")
+      .options({
+        raw: true
+      });
+  },
   pwa: {
     // name: 'My App',
     // themeColor: '#4DBA87',
@@ -33,4 +46,33 @@ module.exports = {
       // ]
     }
   }
+  // chainWebpack: config => {
+  //   config.module
+  //     .rule("markdown")
+  //     .test(/\.md$/)
+  //     .use(require.resolve("markdown-loader"))
+  //     .loader("markdown-loader")
+  //     .end()
+  //     .rule("html")
+  //     .test(/\.html$/)
+  //     .after("markdown")
+  //     .use(require.resolve("html-loader"))
+  //     .loader("html-loader")
+  // },
+  // configureWebpack: {
+  //   plugins: [
+  //     new webpack.LoaderOptionsPlugin({
+  //       test: /\.md$/,
+  //       options: {
+  //         use: [
+  //           {
+  //             loader: "html-loader"
+  //           },
+  //           {
+  //             loader: "markdown-loader"
+  //           }
+  //         ]
+  //       }
+  //     })]
+  // }
 };

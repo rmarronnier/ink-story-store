@@ -1,3 +1,4 @@
+import appData from "@/assets/app.json";
 export default {
   state: {
     appTitle: process.env.VUE_APP_TITLE,
@@ -7,7 +8,8 @@ export default {
     SWRegistrationForNewContent: null,
     showAddToHomeScreenModalForApple: false,
     refreshingApp: false,
-    currentError: null
+    currentError: null,
+    data: appData
   },
   mutations: {
     setNetworkOnline: (state, value) => (state.networkOnLine = value),
@@ -47,6 +49,7 @@ export default {
   getters: {
     newContentAvailable: state => state.SWRegistrationForNewContent != null,
     networkOnLine: state => state.networkOnLine,
-    allAssetsCached: state => state.allAssetsCached
+    allAssetsCached: state => state.allAssetsCached,
+    appData: state => state.data
   }
 };

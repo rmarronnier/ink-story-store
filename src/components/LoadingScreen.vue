@@ -1,5 +1,7 @@
 <template>
   <main id="loading-screen">
+    <!-- <img src="@/assets/logo.svg
+    " alt />-->
     <p>Les histoires sont en train d'être téléchargées...</p>
     <progress class="pure-material-progress-circular" />
   </main>

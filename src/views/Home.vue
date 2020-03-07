@@ -1,23 +1,43 @@
 <template>
   <div id="home">
-    <img alt="Lise Marcy logo" src="@/assets/logo.svg" />
+    <img :alt="shortName" src="@/assets/logo.svg" />
+    <article>
+      <homeMarkdown id="markdown" />
+    </article>
+
     <StoryMenu v-if="assetsCached" />
     <LoadingScreen v-else />
+    <footer>
+      Histoires créés par
+      <a :href="authorURL">{{ authorName }}</a
+      >.
+    </footer>
   </div>
 </template>
 
 <script>
+import homeMarkdown from "@/assets/home.md";
 import StoryMenu from "@/components/StoryMenu.vue";
 import LoadingScreen from "@/components/LoadingScreen.vue";
 export default {
   name: "home",
   components: {
     StoryMenu,
-    LoadingScreen
+    LoadingScreen,
+    homeMarkdown
   },
   computed: {
     assetsCached() {
       return this.$store.getters.allAssetsCached;
+    },
+    authorName() {
+      return this.$store.getters.appData.authorName;
+    },
+    authorURL() {
+      return this.$store.getters.appData.authorURL;
+    },
+    shortName() {
+      return this.$store.getters.appData.shortName;
     }
   },
   mounted() {
@@ -30,6 +50,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+#markdown {
+  color: white;
+}
 #home {
   height: 100%;
   max-height: 100%;
