@@ -1,8 +1,6 @@
 <template>
   <div id="licence-form">
-    <a id="licence-form-show" @click="showLicenceForm"
-      >Vous avez déjà acheté cette histoire ?</a
-    >
+    <a id="licence-form-show" @click="showLicenceForm">Vous avez déjà acheté cette histoire ?</a>
 
     <div class="licence-form" v-if="show">
       <div class="form-group">
@@ -23,16 +21,15 @@
       </div>
 
       <p class="error-message">{{ error }}</p>
-      <a href="https://gumroad.com/license-key-lookup" target="_blank"
-        >Clé de license oubliée ou perdue ?</a
-      >
+      <a
+        href="https://gumroad.com/license-key-lookup"
+        target="_blank"
+      >Clé de license oubliée ou perdue ?</a>
     </div>
   </div>
 </template>
 
 <script>
-import firebase from "firebase/app";
-import "firebase/functions";
 export default {
   name: "CheckLicenseKey",
   data() {
@@ -47,15 +44,22 @@ export default {
       this.show = true;
     },
     checkLicenseKey(key) {
-      var checkGumroadLicenseKey = firebase
-        .functions()
-        .httpsCallable("checkGumroadLicenseKey");
-      checkGumroadLicenseKey({
-        key: key,
-        permalink: this.$store.getters.gumroadPermalink
+      const url =
+        "https://us-central1-lise-story.cloudfunctions.net/checkGumroadLicenseKeyEndpoint";
+
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          product_permalink: this.$store.getters.gumroadPermalink,
+          license_key: key
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        }
       })
+        .then(response => response.json())
         .then(result => {
-          if (result.data.success) {
+          if (result.success) {
             this.$store.dispatch("buyStory");
             this.$modal.hide("ask-for-payment");
             //this.choucroute = "Bonne clé, merci !!!";
