@@ -1,8 +1,9 @@
 # Use .json in assets as a source to app data (title, description, etc.)
 # remove firebase dependencies
 # /story route guard if ui is not ready (story not chosen)
+# Dynamically generated jsonld
 # refactor stories store
-# make the gumroad payment a vuex plugin / make a payment plugin => get rid of firebase dependency
+# make the gumroad payment a vuex plugin / make a payment plugin
 # bunnyCDN assets linking
 # Add splash screen component (used when launching a story with infos about author, title, etc...)
 # fix css modals, story menu
@@ -20,7 +21,7 @@
 # ~~ dynamically generated meta-description + title // https://medium.com/@arieldi/pourquoi-et-comment-g%C3%A9rer-la-balise-title-et-la-meta-description-avec-vue-js-seo-71332be1e605 ~~
 # ~~text input sanitizer + length limiter~~
 # ~~ set up preloading story assets before allowing to load it ~~
-# get rid of firebase dependendcy (by calling function through https endpoint)
+# ~~ get rid of firebase dependendcy (by calling function through https endpoint) ~~
 # Autoplay mode
 # scrolling down instead of clicking to continue story
 # Create a modals component englobing all modals

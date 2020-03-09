@@ -1,5 +1,6 @@
 <template>
   <section id="story">
+    <script v-html="jsonld" type="application/ld+json"></script>
     <Background />
     <TextBox v-if="hasText" />
     <InputModal v-if="inputModalData" />
@@ -23,6 +24,37 @@ export default {
     TextBox,
     InputModal,
     Cover
+  },
+  data() {
+    return {
+      jsonld: {
+        "@context": "http://schema.org",
+        "@type": "VideoGame",
+        name: this.$store.getters.storyTitle,
+        //"url": "http://fallout.wikia.com/wiki/Fallout_3",
+        playMode: "SinglePlayer",
+        author: {
+          name: this.$store.getters.storyAuthor,
+          url: this.$store.getters.appData.authorURL
+        },
+        publisher: "DopamineJam",
+        genre: "Choose your own adventure",
+        gamePlatform: ["Web", "Android", "iOS"],
+        contentRating: "ESRB E",
+        gameItem: {
+          "@type": "Thing",
+          url: "",
+          description: this.$store.getters.storyDescription
+        },
+        aggregateRating: {
+          "@type": "aggregateRating",
+          ratingValue: "4.6",
+          reviewCount: "4512"
+        },
+        applicationCategory: "game",
+        operatingSystem: "all"
+      }
+    };
   },
   beforeCreate() {
     if (

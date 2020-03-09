@@ -9,7 +9,8 @@
       />
       <video
         v-else-if="this.$store.getters.backgroundVideo != null"
-        src="backgroundVideoURL"
+        :src="backgroundVideoURL"
+        :key="backgroundVideoURL"
       ></video>
     </transition>
     <audio
@@ -17,6 +18,7 @@
       autoplay
       loop
       :src="backgroundSoundURL"
+      :key="backgroundSoundURL"
     ></audio>
   </div>
 </template>
@@ -58,11 +60,20 @@ export default {
 
 <style scoped lang="scss">
 .fade-enter-active {
-  animation: fade-in 0.5s;
+  transition: opacity 1.5s ease-in-out;
+  //animation: fade-in 2s;
 }
-.fade-out-active {
-  animation: fade-out 0.5s;
+
+.fade-enter-to {
+  opacity: 1;
 }
+
+.fade-enter {
+  opacity: 0;
+}
+// .fade-out-active {
+//   //animation: fade-out 2s;
+// }
 
 #background {
   z-index: 0;
