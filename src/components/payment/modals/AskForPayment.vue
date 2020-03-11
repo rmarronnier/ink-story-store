@@ -28,8 +28,12 @@
         </p>
       </div>
       <div class="modal-buttons">
-        <button class="skewBtn blue" @click="goHome">Revenir à l'accueil</button>
-        <button class="skewBtn brick" @click="startOver">Recommencer l'histoire</button>
+        <button class="skewBtn blue" @click="goHome">
+          Revenir à l'accueil
+        </button>
+        <button class="skewBtn brick" @click="startOver">
+          Recommencer l'histoire
+        </button>
       </div>
     </article>
   </modal>

@@ -1,7 +1,11 @@
 <template>
   <article class="speech">
     <p class="portrait">
-      <img v-if="this.$store.getters.portrait" :src="computedPortrait" alt="portrait" />
+      <img
+        v-if="this.$store.getters.portrait"
+        :src="computedPortrait"
+        alt="portrait"
+      />
       <strong>{{ speech.character }}</strong>
     </p>
 
@@ -17,7 +21,9 @@
         duration: 1200,
         delay: (el, i) => 500 + 30 * i
       }"
-    >{{ speech.content }}</p>
+    >
+      {{ speech.content }}
+    </p>
   </article>
 </template>
 
