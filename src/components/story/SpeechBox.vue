@@ -1,11 +1,7 @@
 <template>
   <article class="speech">
     <p class="portrait">
-      <img
-        v-if="this.$store.getters.portrait"
-        :src="computedPortrait"
-        alt="portrait"
-      />
+      <img v-if="this.$store.getters.portrait" :src="computedPortrait" alt="portrait" />
       <strong>{{ speech.character }}</strong>
     </p>
 
@@ -21,9 +17,7 @@
         duration: 1200,
         delay: (el, i) => 500 + 30 * i
       }"
-    >
-      {{ speech.content }}
-    </p>
+    >{{ speech.content }}</p>
   </article>
 </template>
 
@@ -55,10 +49,8 @@ export default {
 .speech {
   padding: 1vh;
   padding-left: 4vh;
-  // font-size: 3vh;
   display: flex;
   flex-direction: row;
-  //justify-content: space-between;
   align-items: center;
   .portrait {
     display: flex;
@@ -76,6 +68,7 @@ export default {
     }
     strong {
       width: calc(4vw + 4vh + 4vmin);
+      font-size: calc(1vw + 1vh + 1vmin);
     }
   }
   .content {

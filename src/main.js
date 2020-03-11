@@ -6,6 +6,10 @@ import "./registerServiceWorker";
 import VModal from "vue-js-modal";
 import Payment from "@/payment/payment";
 import VueAnime from "vue-animejs"; //DIRTY better put it deep down the story component if not used elsewhere
+import VueTinySlider from "vue-tiny-slider";
+import "tiny-slider/src/tiny-slider.scss";
+
+Vue.component("tiny-slider", VueTinySlider);
 
 Vue.config.productionTip = false;
 

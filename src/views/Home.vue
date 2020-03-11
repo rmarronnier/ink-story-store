@@ -1,34 +1,39 @@
 <template>
   <div id="home">
     <img :alt="shortName" src="@/assets/logo.svg" />
-    <article>
-      <homeMarkdown id="markdown" />
-    </article>
+    <section>
+      <!-- <article>
+        <homeMarkdown id="markdown" />
+      </article>-->
 
-    <StoryMenu v-if="assetsCached" />
-    <LoadingScreen v-else />
+      <StoryMenu v-if="assetsCached" />
+      <LoadingScreen v-else />
+    </section>
+
     <footer>
       Histoires créés par
-      <a :href="authorURL">{{ authorName }}</a
-      >.
+      <a :href="authorURL">{{ authorName }}</a>.
     </footer>
   </div>
 </template>
 
 <script>
-import homeMarkdown from "@/assets/home.md";
+//import homeMarkdown from "@/assets/home.md";
 import StoryMenu from "@/components/StoryMenu.vue";
 import LoadingScreen from "@/components/LoadingScreen.vue";
 export default {
   name: "home",
   components: {
     StoryMenu,
-    LoadingScreen,
-    homeMarkdown
+    LoadingScreen
+    //homeMarkdown
   },
   computed: {
     assetsCached() {
-      return this.$store.getters.allAssetsCached;
+      return (
+        this.$store.getters.allAssetsCached &&
+        this.$store.getters.downloaded != null
+      );
     },
     authorName() {
       return this.$store.getters.appData.authorName;
@@ -50,17 +55,26 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-#markdown {
-  color: white;
+//#home {
+// height: 100%;
+// max-height: 100%;
+// max-width: 100%;
+// overflow: hidden;
+// width: 100%;
+// display: block;
+// background-color: #493c50ff;
+section {
+  display: flex;
+  #markdown {
+    flex-direction: column;
+    color: white;
+    font-size: calc(1vw + 1vh + 1vmin);
+    width: 50%;
+  }
+  #StoryMenu,
+  #LoadingScreen {
+    //width: 50%;
+  }
 }
-#home {
-  height: 100%;
-  max-height: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  width: 100%;
-  display: block;
-  text-align: center;
-  background-color: #493c50ff;
-}
+//}
 </style>

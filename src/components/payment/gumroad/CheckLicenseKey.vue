@@ -1,8 +1,6 @@
 <template>
   <div id="licence-form">
-    <a id="licence-form-show" @click="showLicenceForm"
-      >Vous avez déjà acheté cette histoire ?</a
-    >
+    <a id="licence-form-show" @click="showLicenceForm">Vous avez déjà acheté cette histoire ?</a>
 
     <div class="licence-form" v-if="show">
       <div class="form-group">
@@ -19,13 +17,15 @@
             v-model="key"
           />
           <button @click="checkLicenseKey(key)">Envoyer</button>
+          <progress v-if="checking" class="pure-material-progress-circular" />
         </div>
       </div>
 
       <p class="error-message">{{ error }}</p>
-      <a href="https://gumroad.com/license-key-lookup" target="_blank"
-        >Clé de license oubliée ou perdue ?</a
-      >
+      <a
+        href="https://gumroad.com/license-key-lookup"
+        target="_blank"
+      >Clé de license oubliée ou perdue ?</a>
     </div>
   </div>
 </template>
@@ -37,7 +37,8 @@ export default {
     return {
       show: false,
       key: null,
-      error: null
+      error: null,
+      checking: false
     };
   },
   methods: {
@@ -45,6 +46,8 @@ export default {
       this.show = true;
     },
     checkLicenseKey(key) {
+      this.error = null;
+      this.checking = true;
       const url =
         "https://us-central1-lise-story.cloudfunctions.net/checkGumroadLicenseKeyEndpoint";
 
@@ -60,6 +63,7 @@ export default {
       })
         .then(response => response.json())
         .then(result => {
+          this.checking = false;
           if (result.success) {
             this.$store.dispatch("buyStory");
             this.$modal.hide("ask-for-payment");
@@ -69,6 +73,7 @@ export default {
           }
         })
         .catch(error => {
+          this.checking = false;
           this.error =
             "Nous avons rencontré une erreur technique,  veuillez nous en excuser." +
             error;
@@ -87,32 +92,34 @@ a {
 .licence-form {
   font-size: 20px;
   font-family: "Roboto";
-  width: 600px;
-  margin: 30px auto 0;
-  display: block;
   background: #fff;
   padding: 10px 50px 50px;
   .form-group {
     // position: relative;
     // margin-bottom: 45px;
-    display: flex;
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: column;
     #input-licence-group {
       margin-top: 15px;
       display: flex;
       justify-content: space-evenly;
+      flex-flow: wrap;
       button {
-        border: solid black 1px;
-        border-radius: 10%;
+        color: #757575;
+        font-weight: bolder;
+        background-color: transparent;
+        border-bottom: solid 1px;
+        flex-grow: 1;
+        padding: 10px 10px 10px 5px;
+        // border: solid black 1px;
+        // border-radius: 10%;
       }
+      @import "@/theme/app/progress.scss";
     }
     input {
-      font-size: 18px;
       padding: 10px 10px 10px 5px;
-      display: block;
-      width: 400px;
-      border: none;
       border-bottom: 1px solid #757575;
+      flex-grow: 2;
     }
     input::placeholder {
       font-size: 14px;
@@ -121,14 +128,8 @@ a {
       outline: none;
     }
     label {
-      margin-bottom: 15px;
       color: #565353;
-      font-size: 18px;
-      font-weight: normal;
-      pointer-events: none;
-      transition: 0.2s ease all;
-      -moz-transition: 0.2s ease all;
-      -webkit-transition: 0.2s ease all;
+      font-size: calc(1vw + 1vh + 0.5vmin);
     }
     /* active state */
     input:focus ~ label,
@@ -136,79 +137,6 @@ a {
       top: -20px;
       font-size: 14px;
       color: #5264ae;
-    }
-
-    /* BOTTOM BARS ================================= */
-    .bar {
-      position: relative;
-      display: block;
-      width: 300px;
-    }
-    .bar:before,
-    .bar:after {
-      content: "";
-      height: 2px;
-      width: 0;
-      background: #5264ae;
-      transition: 0.2s ease all;
-      -moz-transition: 0.2s ease all;
-      -webkit-transition: 0.2s ease all;
-    }
-    .bar:before {
-      left: 50%;
-    }
-    .bar:after {
-      right: 50%;
-    }
-
-    /* active state */
-    input:focus ~ .bar:before,
-    input:focus ~ .bar:after {
-      width: 50%;
-    }
-
-    /* HIGHLIGHTER ================================== */
-    .highlight {
-      height: 60%;
-      width: 100px;
-      pointer-events: none;
-      opacity: 0.5;
-    }
-
-    /* active state */
-    input:focus ~ .highlight {
-      -webkit-animation: inputHighlighter 0.3s ease;
-      -moz-animation: inputHighlighter 0.3s ease;
-      animation: inputHighlighter 0.3s ease;
-    }
-
-    /* ANIMATIONS ================ */
-    @-webkit-keyframes inputHighlighter {
-      from {
-        background: #5264ae;
-      }
-      to {
-        width: 0;
-        background: transparent;
-      }
-    }
-    @-moz-keyframes inputHighlighter {
-      from {
-        background: #5264ae;
-      }
-      to {
-        width: 0;
-        background: transparent;
-      }
-    }
-    @keyframes inputHighlighter {
-      from {
-        background: #5264ae;
-      }
-      to {
-        width: 0;
-        background: transparent;
-      }
     }
   }
 }

@@ -36,7 +36,6 @@ body {
   max-height: 100vh;
   max-width: 100vw;
   font-size: calc(1.2vw + 1.2vh + 4vmin);
-  text-align: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
