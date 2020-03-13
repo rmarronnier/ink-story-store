@@ -1,6 +1,6 @@
 <template>
   <div class="in-game-menu">
-    <GumroadOverlayButton id="gumroad" v-if="showGumroadButton" />
+    <!-- <GumroadOverlayButton id="gumroad" v-if="showGumroadButton" /> -->
     <button @click="askConfirmation">
       <img
         width="36px"
@@ -17,21 +17,21 @@
 </template>
 
 <script>
-import GumroadOverlayButton from "@/components/payment/gumroad/GumroadOverlayButton.vue";
+//import GumroadOverlayButton from "@/components/payment/gumroad/GumroadOverlayButton.vue";
 export default {
   name: "InGameMenu",
   data() {
     return {};
   },
   components: {
-    GumroadOverlayButton
+    //GumroadOverlayButton
   },
   computed: {
-    showGumroadButton() {
-      return (
-        !this.$store.getters.isStoryBought && this.$store.getters.networkOnLine
-      );
-    }
+    // showGumroadButton() {
+    //   return (
+    //     !this.$store.getters.isStoryBought && this.$store.getters.networkOnLine
+    //   );
+    // }
   },
   methods: {
     goHome() {

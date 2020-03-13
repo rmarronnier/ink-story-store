@@ -74,8 +74,9 @@ header {
     padding: 15px;
     min-width: 75%;
     #markdown {
+      background-color: wheat;
       flex-direction: column;
-      color: white;
+      color: black;
       font-size: calc(1vw + 1vh + 1vmin);
       font-family: "Libre Baskerville", serif;
       //text-shadow: 0 1px 1px #fff;
