@@ -6,8 +6,10 @@
       :style="{ 'background-image': `url(${teaserImageUrl(storyId)})` }"
       class="teaser-choice"
     >
-      <h2>{{ storyTitle(json) }}</h2>
-      <article>{{ teaserText(json) }}</article>
+      <article>
+        <h2>{{ storyTitle(json) }}</h2>
+        <p>{{ teaserText(json) }}</p>
+      </article>
       <button class="lined thin" @click="choose(storyId)">
         Lire {{ storyId }}
       </button>
@@ -55,12 +57,18 @@ main#StoryMenu {
   // width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   text-align: center;
   //position: relative;
   margin: 0;
   padding: 0;
   .teaser-choice {
-    width: 100%;
+    //flex-shrink: 0.3;
+    flex-basis: 40%;
+    flex-grow: 1.2;
+    margin: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    //width: 100%;
     //align-items: center;
     color: #fff;
     //display: block;
@@ -75,6 +83,13 @@ main#StoryMenu {
     // width: 100%;
     // height: 50%;
     // max-width: 800px;
+    article {
+      h2,
+      p {
+        background-color: #614abdbd;
+        width: fit-content;
+      }
+    }
     button {
       align-self: center;
       background: #f0f0d8;

@@ -14,13 +14,10 @@
     "inkjs": "^1.10.3",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.11",
-    "vue-agile": "^1.0.11",
     "vue-animejs": "^2.1.1",
     "vue-croppa": "^1.3.8",
     "vue-js-modal": "^1.3.33",
     "vue-router": "^3.1.5",
-    "vue-slick-carousel": "^1.0.2",
-    "vue-tiny-slider": "^0.1.39",
     "vuex": "^3.1.2",
     "vuex-persist": "^2.2.0"
   },
