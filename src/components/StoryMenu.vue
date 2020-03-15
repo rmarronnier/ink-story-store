@@ -9,10 +9,8 @@
       <article>
         <h2>{{ storyTitle(json) }}</h2>
         <p>{{ teaserText(json) }}</p>
+        <button class="lined thin" @click="choose(storyId)">Lire {{ storyId }}</button>
       </article>
-      <button class="lined thin" @click="choose(storyId)">
-        Lire {{ storyId }}
-      </button>
     </section>
   </main>
 </template>
@@ -64,45 +62,80 @@ main#StoryMenu {
   padding: 0;
   .teaser-choice {
     //flex-shrink: 0.3;
+    border-radius: 5%;
     flex-basis: 40%;
     flex-grow: 1.2;
-    margin: 10px;
+    margin: 20px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    //width: 100%;
-    //align-items: center;
+    justify-content: space-between;
     color: #fff;
-    //display: block;
-    // margin: 0;
-    // padding: 0;
-    //height: 300px;
-    //justify-content: center;
-    // width: 100%;
-    // height: 100%;
-    // position: relative;
-    // display: block;
-    // width: 100%;
-    // height: 50%;
-    // max-width: 800px;
+    display: flex;
+    flex-direction: column;
+
     article {
+      border-radius: 5%;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.22);
+      text-align: left;
+      flex-grow: 2;
+      justify-content: space-around;
+      display: flex;
+      flex-direction: column;
       h2,
       p {
-        background-color: #614abdbd;
         width: fit-content;
+        font-size: calc(1vw + 1vh + 1vmin);
+      }
+      h2 {
+        display: inline-block;
+        //width: 173px;
+        margin: 0 10px;
+        position: relative;
+        transform: skewy(-3deg);
+        backface-visibility: hidden;
+        transition: 200ms all;
+        font-size: 125%;
+        background: #fff;
+        padding: 2px 10px;
+        color: #333;
+        text-align: center;
+        text-decoration: none;
+        position: relative;
+        z-index: 1;
+        text-shadow: 1px 1px 0px #fff, 2px 2px 0px #999, 3px 3px 0px #fff;
+        background-image: linear-gradient(
+          top,
+          transparent 0%,
+          rgba(0, 0, 0, 0.05) 100%
+        );
+        transition: 1s all;
+        background-image: linear-gradient(
+          left top,
+          transparent 0%,
+          transparent 25%,
+          rgba(0, 0, 0, 0.15) 25%,
+          rgba(0, 0, 0, 0.15) 50%,
+          transparent 50%,
+          transparent 75%,
+          rgba(0, 0, 0, 0.15) 75%
+        );
+        background-size: 4px 4px;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4) inset,
+          0 0 20px -5px rgba(0, 0, 0, 0.4), 0 0 0px 3px #fff inset;
       }
     }
     button {
-      align-self: center;
-      background: #f0f0d8;
+      align-self: flex-end;
+      background: #4b4b2d3b;
       //background:transparent;
       padding: 1rem 1rem;
-      margin: 0 1rem;
+      margin: 20px;
       transition: all 0.5s ease;
-      color: #41403e;
-      font-size: 2rem;
-      letter-spacing: 1px;
+      color: white;
       outline: none;
       box-shadow: 20px 38px 34px -26px hsla(0, 0%, 0%, 0.2);
-      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      border-radius: 10%;
+      font-weight: bolder;
       /*
       Above is shorthand for:
       border-top-left-radius: 255px 15px;
