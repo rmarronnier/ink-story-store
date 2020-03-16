@@ -2,12 +2,20 @@
   padding: 10px;
   font-style: 13px;
   text-align: center;
+  p {
+    font-size: calc(1.2vw + 1.2vh + 4vmin);
+    color: #444;
+  }
   .modal-buttons {
     button {
     border: 2px solid #757575;
     border-radius: 0 10%;
     background-color: white;
     color: #757575;
+    margin: 20px;
+padding: 10px;
+font-size: large;
+font-weight: bold;
     }
 }
 

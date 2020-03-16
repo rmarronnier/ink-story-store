@@ -1,9 +1,9 @@
 <template>
   <main class="home">
     <header>
-      <h1>{{ shortName.toUpperCase() }}</h1>
+      <h1>{{ shortName }}</h1>
       <homeMarkdown id="markdown" />
-      <img :alt="shortName" src="@/assets/logo.svg" />
+      <img :alt="shortName" src="@/assets/logo.svg" width="300px" />
     </header>
 
     <section id="story-menu">
@@ -13,7 +13,8 @@
 
     <footer>
       Histoires créés par
-      <a :href="authorURL">{{ authorName }}</a>.
+      <a :href="authorURL">{{ authorName }}</a
+      >.
     </footer>
   </main>
 </template>
@@ -76,12 +77,24 @@ main.home {
     margin: 0;
     h1,
     img {
-      margin: 15px;
+      //margin: 15px;
     }
     h1 {
+      min-width: fit-content;
       //width: 70%;
-
-      background-color: #f49f05;
+      //text-transform: uppercase;
+      text-shadow: 1px 1px 1px black;
+      margin: 0;
+      padding: 15px;
+      // background: repeating-linear-gradient(
+      //   45deg,
+      //   #f49f05,
+      //   #f49f05 20px,
+      //   transparent 20px,
+      //   transparent 40px
+      // );
+      //text-decoration: #f49f05 solid underline 3px;
+      //background-color: #f49f05;
       color: white;
       font-family: "Lora", serif;
       font-size: calc(1vw + 1vh + 1vmin);
@@ -97,7 +110,9 @@ main.home {
       //width: 50%;
     }
     img {
-      width: 25%;
+      //width: 25%;
+      //min-width: 100px;
+      min-width: fit-content;
     }
   }
   #story-menu {
@@ -115,6 +130,7 @@ main.home {
     //height: 10vh;
     font-size: calc(0.5vw + 0.5vh + 0.5vmin);
     color: white;
+    text-align: right;
   }
 }
 

@@ -36,18 +36,19 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.size-modal-content {
-  padding: 10px;
-  font-style: 13px;
-}
+@import "@/theme/app/modals/modals.scss";
+// .size-modal-content {
+//   padding: 10px;
+//   font-style: 13px;
+// }
 
-.v--modal-overlay[data-modal="size-modal"] {
-  background: rgba(0, 0, 0, 0.5);
-}
+// .v--modal-overlay[data-modal="size-modal"] {
+//   background: rgba(0, 0, 0, 0.5);
+// }
 
-.demo-modal-class {
-  border-radius: 5px;
-  background: #f7f7f7;
-  box-shadow: 5px 5px 30px 0px rgba(46, 61, 73, 0.6);
-}
+// .demo-modal-class {
+//   border-radius: 5px;
+//   background: #f7f7f7;
+//   box-shadow: 5px 5px 30px 0px rgba(46, 61, 73, 0.6);
+// }
 </style>

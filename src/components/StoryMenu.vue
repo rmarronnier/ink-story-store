@@ -9,7 +9,9 @@
       <article>
         <h2>{{ storyTitle(json) }}</h2>
         <p>{{ teaserText(json) }}</p>
-        <button class="lined thin" @click="choose(storyId)">Lire {{ storyId }}</button>
+        <button class="lined thin" @click="choose(storyId)">
+          Lire {{ storyId }}
+        </button>
       </article>
     </section>
   </main>
@@ -156,7 +158,8 @@ main#StoryMenu {
         border: dashed 5px #41403e;
       }
       &.lined.thin {
-        border: solid 2px #41403e;
+        //border: solid 2px #41403e;
+        border: solid 2px white;
       }
       &.dotted.thin {
         border: dotted 2px #41403e;

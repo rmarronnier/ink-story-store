@@ -71,10 +71,13 @@ export default {
       height: calc(4vw + 4vh + 4vmin);
       margin-bottom: 10px;
       border-radius: 50%;
+      margin: auto;
     }
     strong {
       width: calc(4vw + 4vh + 4vmin);
       font-size: calc(1vw + 1vh + 1vmin);
+      margin: auto;
+      text-align: center;
     }
   }
   .content {

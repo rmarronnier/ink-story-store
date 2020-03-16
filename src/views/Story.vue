@@ -147,13 +147,14 @@ export default {
   background-color: rgba(0, 0, 0, 0.5);
   min-height: 40%;
   // max-height: 40%;
-  overflow-y: auto;
+  //overflow-y: auto;
   width: 100%;
   z-index: 10;
   text-align: left;
   position: absolute;
   bottom: 0;
   color: rgb(255, 255, 255);
+  overflow: hidden;
 }
 
 #inputmodal {
