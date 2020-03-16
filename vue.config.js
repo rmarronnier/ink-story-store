@@ -1,4 +1,6 @@
 // Inside vue.config.js
+const AppData = require("./src/assets/app.json");
+
 module.exports = {
   // ...other vue-cli plugin options...
   chainWebpack(config) {
@@ -15,11 +17,19 @@ module.exports = {
       });
   },
   pwa: {
-    // name: 'My App',
-    // themeColor: '#4DBA87',
-    // msTileColor: '#000000',
-    // appleMobileWebAppCapable: 'yes',
-    // appleMobileWebAppStatusBarStyle: 'black',
+    name: AppData.longName,
+    themeColor: AppData.theme_color,
+    msTileColor: AppData.theme_color,
+    appleMobileWebAppCapable: 'no',
+    appleMobileWebAppStatusBarStyle: 'black',
+    manifestOptions: {
+      short_name: AppData.shortName,
+      description: AppData.description,
+      lang: AppData.lang,
+      categories: AppData.tags,
+      display: AppData.display,
+      orientation: AppData.orientation
+    },
 
     // configure the workbox plugin
     workboxPluginMode: "InjectManifest",
