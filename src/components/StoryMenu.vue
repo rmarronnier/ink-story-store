@@ -125,10 +125,13 @@ main#StoryMenu {
         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4) inset,
           0 0 20px -5px rgba(0, 0, 0, 0.4), 0 0 0px 3px #fff inset;
       }
+      p {
+        text-shadow: black 1px 1px 1px;
+      }
     }
     button {
       align-self: flex-end;
-      background: #4b4b2d3b;
+      background: #4b4b2d96;
       //background:transparent;
       padding: 1rem 1rem;
       margin: 20px;
@@ -138,6 +141,8 @@ main#StoryMenu {
       box-shadow: 20px 38px 34px -26px hsla(0, 0%, 0%, 0.2);
       border-radius: 10%;
       font-weight: bolder;
+      font-size: 30%;
+      text-shadow: black 1px 1px 1px;
       /*
       Above is shorthand for:
       border-top-left-radius: 255px 15px;
@@ -159,7 +164,7 @@ main#StoryMenu {
       }
       &.lined.thin {
         //border: solid 2px #41403e;
-        border: solid 2px white;
+        border: solid 6px white;
       }
       &.dotted.thin {
         border: dotted 2px #41403e;

@@ -3,7 +3,7 @@
     <header>
       <h1>{{ shortName }}</h1>
       <homeMarkdown id="markdown" />
-      <img :alt="shortName" src="@/assets/logo.svg" width="300px" />
+      <img :alt="shortName" src="@/assets/logo.svg" />
     </header>
 
     <section id="story-menu">
@@ -86,15 +86,6 @@ main.home {
       text-shadow: 1px 1px 1px black;
       margin: 0;
       padding: 15px;
-      // background: repeating-linear-gradient(
-      //   45deg,
-      //   #f49f05,
-      //   #f49f05 20px,
-      //   transparent 20px,
-      //   transparent 40px
-      // );
-      //text-decoration: #f49f05 solid underline 3px;
-      //background-color: #f49f05;
       color: white;
       font-family: "Lora", serif;
       font-size: calc(1vw + 1vh + 1vmin);

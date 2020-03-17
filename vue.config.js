@@ -20,8 +20,8 @@ module.exports = {
     name: AppData.longName,
     themeColor: AppData.theme_color,
     msTileColor: AppData.theme_color,
-    appleMobileWebAppCapable: 'no',
-    appleMobileWebAppStatusBarStyle: 'black',
+    appleMobileWebAppCapable: "no",
+    appleMobileWebAppStatusBarStyle: "black",
     manifestOptions: {
       short_name: AppData.shortName,
       description: AppData.description,

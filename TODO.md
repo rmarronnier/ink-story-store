@@ -1,10 +1,15 @@
-# Use .json in assets as a source to app data (title, description, etc.)
-# remove firebase dependencies
+# footer
+# header (logo size)
+# ingame menu
+# modals
+# icons
+# bunnyCDN assets linking
+# Remove croppa and portrait input component
+# change !!! cover syntax to [!!!]
 # /story route guard if ui is not ready (story not chosen)
 # Dynamically generated jsonld
 # refactor stories store
 # make the gumroad payment a vuex plugin / make a payment plugin
-# bunnyCDN assets linking
 # Add splash screen component (used when launching a story with infos about author, title, etc...)
 # fix css modals, story menu
 # fix transitions
@@ -18,6 +23,8 @@
 # Make the story component a npm package or bit.dev
 # Add notifications (push notification + toasters) - Add a thank you toaster after purchase
 # animation / transition configurable in external scss (/assets)
+# ~~ remove firebase dependencies ~~
+# ~~ Use .json in assets as a source to app data (title, description, etc.) ~~
 # ~~ dynamically generated meta-description + title // https://medium.com/@arieldi/pourquoi-et-comment-g%C3%A9rer-la-balise-title-et-la-meta-description-avec-vue-js-seo-71332be1e605 ~~
 # ~~text input sanitizer + length limiter~~
 # ~~ set up preloading story assets before allowing to load it ~~
@@ -26,8 +33,6 @@
 # scrolling down instead of clicking to continue story
 # Create a modals component englobing all modals
 
-## jumping height of text box
-## width issues sometimes with text box
 ## Portrait layout not aligned
 ## modals make over needed
 ## Loading screen makeover needed (logo branding)
