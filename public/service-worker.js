@@ -17,7 +17,7 @@
 //   "/precache-manifest.35ddf18d76ce9e9762c6857fe521f75d.js"
 // );
 
-workbox.core.setCacheNameDetails({ prefix: "ink-store3" });
+workbox.core.setCacheNameDetails({ prefix: "ink-store4" });
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {

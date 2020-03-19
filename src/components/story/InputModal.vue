@@ -1,26 +1,18 @@
 <template>
   <div id="inputmodal">
-    <TextInput v-if="!portrait"></TextInput>
-    <PortraitInput v-if="portrait"></PortraitInput>
+    <TextInput />
   </div>
 </template>
 
 <script>
 import TextInput from "@/components/story/input/TextInput.vue";
-import PortraitInput from "@/components/story/input/PortraitInput.vue";
 export default {
   name: "InputModal",
   data() {
     return {};
   },
   components: {
-    TextInput,
-    PortraitInput
-  },
-  computed: {
-    portrait() {
-      return this.$store.state.stories.ui.input.variable.includes("portrait");
-    }
+    TextInput
   }
 };
 </script>

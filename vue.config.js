@@ -28,7 +28,19 @@ module.exports = {
       lang: AppData.lang,
       categories: AppData.tags,
       display: AppData.display,
-      orientation: AppData.orientation
+      orientation: AppData.orientation,
+      icons: [
+        {
+          src: "./img/icons/manifest-icon-192.png",
+          sizes: "192x192",
+          type: "image/png"
+        },
+        {
+          src: "./img/icons/manifest-icon-512.png",
+          sizes: "512x512",
+          type: "image/png"
+        }
+      ]
     },
 
     // configure the workbox plugin

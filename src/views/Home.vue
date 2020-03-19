@@ -2,7 +2,7 @@
   <main class="home">
     <header>
       <h1>{{ shortName }}</h1>
-      <homeMarkdown id="markdown" />
+
       <img :alt="shortName" src="@/assets/logo.svg" />
     </header>
 
@@ -20,15 +20,13 @@
 </template>
 
 <script>
-import homeMarkdown from "@/assets/home.md";
 import StoryMenu from "@/components/StoryMenu.vue";
 import LoadingScreen from "@/components/LoadingScreen.vue";
 export default {
   name: "home",
   components: {
     StoryMenu,
-    LoadingScreen,
-    homeMarkdown
+    LoadingScreen
   },
   computed: {
     assetsCached() {
@@ -90,16 +88,7 @@ main.home {
       font-family: "Lora", serif;
       font-size: calc(1vw + 1vh + 1vmin);
     }
-    #markdown {
-      //background-color: wheat;
-      //flex-direction: column;
-      color: black;
-      font-size: calc(0.5vw + 0.5vh + 0.5vmin);
-      font-family: "Libre Baskerville", serif;
-      //text-shadow: 0 1px 1px #fff;
-      // line-height: calc(2vw + 2vh + 2vmin);
-      //width: 50%;
-    }
+
     img {
       //width: 25%;
       //min-width: 100px;
