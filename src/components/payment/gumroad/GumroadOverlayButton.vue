@@ -5,8 +5,7 @@
       :href="gumroadLink"
       target="_blank"
       data-gumroad-single-product="true"
-      >Débloquer l'histoire</a
-    >
+    >Débloquer l'histoire</a>
   </div>
 </template>
 
@@ -22,9 +21,10 @@ export default {
   computed: {
     gumroadLink() {
       return (
-        "https://gum.co/" +
-        this.$store.getters.gumroadPermalink +
-        "?wanted=true"
+        " https://gumroad.com/a/842167411" + "?wanted=true"
+        // "https://gum.co/" +
+        // this.$store.getters.gumroadPermalink +
+        // "?wanted=true"
       );
     }
   }
