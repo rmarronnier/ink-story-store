@@ -87,7 +87,7 @@ export default {
 <style scoped lang="scss">
 a {
   font-size: 14px;
-  color: grey;
+  color: #604e4e;
   text-decoration: none;
 }
 .licence-form {

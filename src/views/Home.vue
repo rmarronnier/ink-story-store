@@ -1,10 +1,8 @@
 <template>
   <main class="home">
-    <header>
+    <!-- <header>
       <h1>{{ shortName }}</h1>
-
-      <img :alt="shortName" src="@/assets/logo.svg" />
-    </header>
+    </header>-->
 
     <section id="story-menu">
       <StoryMenu v-if="assetsCached" />
@@ -12,9 +10,10 @@
     </section>
 
     <footer>
-      Histoires créés par
-      <a :href="authorURL">{{ authorName }}</a
-      >.
+      Histoires créées par
+      <a :href="authorURL">
+        <img :alt="authorName" src="@/assets/logo.svg" />
+      </a>
     </footer>
   </main>
 </template>
@@ -70,15 +69,11 @@ main.home {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    height: 15vh;
+    height: 20vh;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     margin: 0;
-    h1,
-    img {
-      //margin: 15px;
-    }
     h1 {
-      min-width: fit-content;
+      //min-width: fit-content;
       //width: 70%;
       //text-transform: uppercase;
       text-shadow: 1px 1px 1px black;
@@ -87,12 +82,6 @@ main.home {
       color: white;
       font-family: "Lora", serif;
       font-size: calc(1vw + 1vh + 1vmin);
-    }
-
-    img {
-      //width: 25%;
-      //min-width: 100px;
-      min-width: fit-content;
     }
   }
   #story-menu {
@@ -108,9 +97,19 @@ main.home {
 
   footer {
     //height: 10vh;
-    font-size: calc(0.5vw + 0.5vh + 0.5vmin);
+    font-size: calc(1vw + 1vh + 1vmin);
     color: white;
-    text-align: right;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    a {
+      color: white;
+      text-decoration: dotted 1px white;
+      img {
+        max-width: calc(4vw + 4vh + 4vmin);
+      }
+    }
   }
 }
 

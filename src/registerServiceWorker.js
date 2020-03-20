@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === "production") {
     ready() {
       console.log(
         "App is being served from cache by a service worker.\n" +
-        "For more details, visit https://goo.gl/AFskqB"
+          "For more details, visit https://goo.gl/AFskqB"
       );
       store.commit(`allAssetsCached`, true);
     },
@@ -30,11 +30,13 @@ if (process.env.NODE_ENV === "production") {
     },
     updated() {
       console.log("New content is available; please refresh.");
+      store.commit(`allAssetsCached`, true);
       // following is not tested yet (it should force the installed pwa to be updated without user action)
-      setTimeout(() => {
-        window.location.reload(true);
-        store.commit(`allAssetsCached`, true);
-      }, 1000);
+
+      // setTimeout(() => {
+      //   window.location.reload(true);
+
+      // }, 1000);
     },
     offline() {
       console.log(

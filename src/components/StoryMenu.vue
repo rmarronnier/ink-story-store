@@ -10,7 +10,7 @@
         <h2>{{ storyTitle(json) }}</h2>
         <p>{{ teaserText(json) }}</p>
         <button class="lined thin" @click="choose(storyId)">
-          Lire {{ storyId }}
+          Lancer l'histoire
         </button>
       </article>
     </section>
@@ -141,7 +141,7 @@ main#StoryMenu {
       box-shadow: 20px 38px 34px -26px hsla(0, 0%, 0%, 0.2);
       border-radius: 10%;
       font-weight: bolder;
-      font-size: 30%;
+      font-size: calc(1vw + 1vh + 2vmin);
       text-shadow: black 1px 1px 1px;
       /*
       Above is shorthand for:
@@ -164,7 +164,7 @@ main#StoryMenu {
       }
       &.lined.thin {
         //border: solid 2px #41403e;
-        border: solid 6px white;
+        border: solid 4px white;
       }
       &.dotted.thin {
         border: dotted 2px #41403e;
