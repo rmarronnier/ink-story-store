@@ -20,7 +20,7 @@ module.exports = {
     name: AppData.longName,
     themeColor: AppData.theme_color,
     msTileColor: AppData.theme_color,
-    appleMobileWebAppCapable: "no",
+    appleMobileWebAppCapable: "yes",
     appleMobileWebAppStatusBarStyle: "black",
     manifestOptions: {
       short_name: AppData.shortName,
@@ -29,6 +29,7 @@ module.exports = {
       categories: AppData.tags,
       display: AppData.display,
       orientation: AppData.orientation,
+      backgroundColor: AppData.background_color,
       icons: [
         {
           src: "./img/icons/manifest-icon-192.png",

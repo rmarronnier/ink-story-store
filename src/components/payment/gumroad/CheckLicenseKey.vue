@@ -94,7 +94,7 @@ a {
   font-size: 20px;
   font-family: "Roboto";
   background: #fff;
-  padding: 10px 50px 50px;
+  padding: 10px 20px 20px;
   .form-group {
     // position: relative;
     // margin-bottom: 45px;

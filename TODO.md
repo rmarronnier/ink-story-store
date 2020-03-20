@@ -2,12 +2,12 @@
 # modals
 # icons
 # sounds ?
+# widget pour installer app sur Ios
 # gumroad ios bug ?
 # bunnyCDN assets linking
 # change !!! cover syntax to [!!!]
 # Dynamically generated jsonld
 # Add splash screen component (used when launching a story with infos about author, title, etc...)
-# fix css modals, story menu
 # fix transitions
 # fix pwa for ios
 # refactor stories store
