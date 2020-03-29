@@ -18,6 +18,7 @@
       <div v-if="networkOnLine">
         <div class="gumroad-buttons">
           <GumroadOverlayButton />
+          <XsollaPaymentButton />
           <CheckLicenseKey />
         </div>
       </div>
@@ -41,12 +42,14 @@
 <script>
 import { mapState } from "vuex";
 import GumroadOverlayButton from "@/components/payment/gumroad/GumroadOverlayButton.vue";
+import XsollaPaymentButton from "@/components/payment/xsolla/XsollaPaymentButton.vue";
 import CheckLicenseKey from "@/components/payment/gumroad/CheckLicenseKey.vue";
 export default {
   name: "AskForPayment",
   components: {
     GumroadOverlayButton,
-    CheckLicenseKey
+    CheckLicenseKey,
+    XsollaPaymentButton
   },
   mounted() {
     /*eslint-disable */
