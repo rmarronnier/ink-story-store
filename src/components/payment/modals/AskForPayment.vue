@@ -29,12 +29,8 @@
         </p>
       </div>
       <div class="modal-buttons">
-        <button class="skewBtn blue" @click="goHome">
-          Revenir à l'accueil
-        </button>
-        <button class="skewBtn brick" @click="startOver">
-          Recommencer l'histoire
-        </button>
+        <button class="skewBtn blue" @click="goHome">Revenir à l'accueil</button>
+        <button class="skewBtn brick" @click="startOver">Recommencer l'histoire</button>
       </div>
     </article>
   </modal>
@@ -54,6 +50,10 @@ export default {
   mounted() {
     /*eslint-disable */
     window.addEventListener("message", message => {
+      console.log(message);
+      if (message.origin == "https://sandbox-secure.xsolla.com") {
+        console.log(message.data);
+      }
       if (message.origin == "https://gumroad.com") {
         var messageDataObject = JSON.parse(message.data);
         let purchase = {
