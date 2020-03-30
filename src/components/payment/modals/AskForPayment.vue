@@ -17,9 +17,9 @@
       <!-- <p>{{ this.$store.getters.paymentTeaser }}</p> -->
       <div v-if="networkOnLine">
         <div class="gumroad-buttons">
-          <GumroadOverlayButton />
+          <!-- <GumroadOverlayButton /> -->
           <XsollaPaymentButton />
-          <CheckLicenseKey />
+          <!-- <CheckLicenseKey /> -->
         </div>
       </div>
       <div v-else>
@@ -37,27 +37,27 @@
 </template>
 <script>
 import { mapState } from "vuex";
-import GumroadOverlayButton from "@/components/payment/gumroad/GumroadOverlayButton.vue";
+//import GumroadOverlayButton from "@/components/payment/gumroad/GumroadOverlayButton.vue";
 import XsollaPaymentButton from "@/components/payment/xsolla/XsollaPaymentButton.vue";
-import CheckLicenseKey from "@/components/payment/gumroad/CheckLicenseKey.vue";
+//import CheckLicenseKey from "@/components/payment/gumroad/CheckLicenseKey.vue";
 export default {
   name: "AskForPayment",
   components: {
-    GumroadOverlayButton,
-    CheckLicenseKey,
+    //GumroadOverlayButton,
+    //CheckLicenseKey,
     XsollaPaymentButton
   },
   mounted() {
     /*eslint-disable */
     window.addEventListener("message", message => {
-      console.log(message);
+      //console.log(message);
       if (message.origin == "https://sandbox-secure.xsolla.com") {
-        console.log(message.data);
+        //console.log(message.data);
         const messageDataObject = JSON.parse(message.data);
         if (messageDataObject.hasOwnProperty("action")) {
-          console.log("ACTIONNNNNN");
+          // console.log("ACTIONNNNNN");
           if (messageDataObject.action == "complete") {
-            console.log("DONNNE");
+            // console.log("DONNNE");
 
             this.$store.dispatch("buyStory");
             //show thank you note

@@ -5,14 +5,31 @@
 </template>
 
 <script>
+import AppData from "@/assets/app.json";
 export default {
   name: "XsollaPaymentButton",
   beforeCreate() {},
   mounted() {
     /* eslint-disable */
+
     var options = {
       sandbox: true,
-      access_token: "zdpahm4Dx6ZLxJtGB3HcVmTcl7epbkXu",
+      access_data: {
+        settings: {
+          mode: "sandbox",
+          project_id: AppData.xsolla_project_id
+        },
+        purchase: {
+          pin_codes: {
+            codes: [{ digital_content: this.$store.getters.xsollaId }]
+          }
+        },
+        user: {
+          country: {
+            allow_modify: false
+          }
+        }
+      },
       theme: {
         foreground: "green",
         background: "light"
