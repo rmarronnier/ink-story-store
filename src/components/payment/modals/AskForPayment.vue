@@ -53,6 +53,17 @@ export default {
       console.log(message);
       if (message.origin == "https://sandbox-secure.xsolla.com") {
         console.log(message.data);
+        const messageDataObject = JSON.parse(message.data);
+        if (messageDataObject.hasOwnProperty("action")) {
+          console.log("ACTIONNNNNN");
+          if (messageDataObject.action == "complete") {
+            console.log("DONNNE");
+
+            this.$store.dispatch("buyStory");
+            //show thank you note
+            this.$modal.hide("ask-for-payment");
+          }
+        }
       }
       if (message.origin == "https://gumroad.com") {
         var messageDataObject = JSON.parse(message.data);
