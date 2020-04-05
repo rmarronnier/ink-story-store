@@ -3,15 +3,18 @@
     <!-- Modals -->
     <StartOverConfirmation />
     <AskForPayment />
+    <XsollaIframe />
     <router-view id="view" />
   </div>
 </template>
 
 <script>
 import StartOverConfirmation from "@/components/story/modals/StartOverConfirmation.vue";
+import XsollaIframe from "@/components/payment/xsolla/XsollaIframe.vue";
 export default {
   components: {
-    StartOverConfirmation
+    StartOverConfirmation,
+    XsollaIframe
     //AskForPayment
   },
   mounted() {

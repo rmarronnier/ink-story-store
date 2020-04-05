@@ -5,7 +5,8 @@
       :href="gumroadLink"
       target="_blank"
       data-gumroad-single-product="true"
-    >Débloquer l'histoire</a>
+      >Débloquer l'histoire</a
+    >
   </div>
 </template>
 

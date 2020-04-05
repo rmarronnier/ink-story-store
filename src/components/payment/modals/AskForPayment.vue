@@ -17,8 +17,31 @@
       <!-- <p>{{ this.$store.getters.paymentTeaser }}</p> -->
       <div v-if="networkOnLine">
         <div class="gumroad-buttons">
+          <div v-if="!userEmail">
+            <label for="xsolla-email"
+              >Veuillez entrer votre email pour débloquer la suite de l'histoire
+              :</label
+            >
+            <input
+              type="email"
+              name="xsolla-email"
+              id="xsolla-email"
+              v-model="email"
+            />
+            <button v-if="!gettingToken" @click="submitEmail"></button>
+            <progress
+              v-if="gettingToken"
+              class="pure-material-progress-circular"
+            />
+          </div>
+          +
+          <button v-if="token" @click="xsollaPayment">
+            Acheter maintenant
+          </button>
           <!-- <GumroadOverlayButton /> -->
-          <XsollaPaymentButton />
+          <!-- <div id="xl_auth" style="height: 700px"></div> -->
+          <!-- <XsollaPaymentButton /> -->
+          <!-- <XsollaIframe /> -->
           <!-- <CheckLicenseKey /> -->
         </div>
       </div>
@@ -29,35 +52,50 @@
         </p>
       </div>
       <div class="modal-buttons">
-        <button class="skewBtn blue" @click="goHome">Revenir à l'accueil</button>
-        <button class="skewBtn brick" @click="startOver">Recommencer l'histoire</button>
+        <button class="skewBtn blue" @click="goHome">
+          Revenir à l'accueil
+        </button>
+        <button class="skewBtn brick" @click="startOver">
+          Recommencer l'histoire
+        </button>
       </div>
     </article>
   </modal>
 </template>
 <script>
+//import AppData from "@/assets/app.json";
 import { mapState } from "vuex";
+import getXsollaToken from "@/xsolla/token.js";
 //import GumroadOverlayButton from "@/components/payment/gumroad/GumroadOverlayButton.vue";
-import XsollaPaymentButton from "@/components/payment/xsolla/XsollaPaymentButton.vue";
+//import XsollaPaymentButton from "@/components/payment/xsolla/XsollaPaymentButton.vue";
+//import { Widget } from "@xsolla-login/sdk";
 //import CheckLicenseKey from "@/components/payment/gumroad/CheckLicenseKey.vue";
 export default {
   name: "AskForPayment",
   components: {
     //GumroadOverlayButton,
     //CheckLicenseKey,
-    XsollaPaymentButton
+    //XsollaPaymentButton,
+    //XsollaIframe
+  },
+  data() {
+    return {
+      email: this.$store.getters.email,
+      token: null,
+      gettingToken: false
+    };
   },
   mounted() {
     /*eslint-disable */
     window.addEventListener("message", message => {
       //console.log(message);
       if (message.origin == "https://sandbox-secure.xsolla.com") {
-        //console.log(message.data);
+        console.log(message.data);
         const messageDataObject = JSON.parse(message.data);
         if (messageDataObject.hasOwnProperty("action")) {
-          // console.log("ACTIONNNNNN");
+          console.log("ACTIONNNNNN");
           if (messageDataObject.action == "complete") {
-            // console.log("DONNNE");
+            console.log("DONNNE");
 
             this.$store.dispatch("buyStory");
             //show thank you note
@@ -99,12 +137,14 @@ export default {
     user: state => state.user.user,
     networkOnLine: state => state.app.networkOnLine,
     appTitle: state => state.app.appTitle,
-    appShortTitle: state => state.app.appShortTitle
+    appShortTitle: state => state.app.appShortTitle,
+    userEmail: state => state.user.email
   }),
   methods: {
     buyStory() {
       this.$store.dispatch("buyStory");
       this.$modal.hide("ask-for-payment");
+      this.$modal.hide("xsolla-frame");
     },
     goHome() {
       //this.$modal.hide("ask-for-payment");
@@ -113,7 +153,26 @@ export default {
     },
     startOver() {
       this.$store.dispatch("startOver");
+    },
+    submitEmail() {
+      this.$store.commit("setEmail", this.email);
+      const url =
+        "https://us-central1-lise-story.cloudfunctions.net/xsollaTokenGeneration";
+      this.gettingToken = true;
+      getXsollaToken(url, this.email)
+        .then(response => response.json())
+        .then(result => {
+          this.$store.commit("xsollaToken", result.token);
+          this.gettingToken = false;
+        })
+        .catch(error => {
+          this.gettingToken = false;
+          console.error(error);
+        });
     }
+  },
+  xsollaPayment() {
+    this.$modal.show("xsolla-iframe");
   }
 };
 </script>

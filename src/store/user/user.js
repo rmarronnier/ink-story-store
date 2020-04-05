@@ -1,6 +1,7 @@
 export default {
   state: {
     user: undefined,
+    email: null,
     portraits: {},
     storiesBought: ["empty"]
   },
@@ -17,12 +18,16 @@ export default {
     },
     addStoryBought(state, storyId) {
       state.storiesBought.push(storyId);
+    },
+    setEmail(state, email) {
+      state.email = email;
     }
   },
   actions: {},
   getters: {
     storyState: state => state.storyState,
     isUserLoggedIn: state => !(state.user == null),
-    portraits: state => state.portraits
+    portraits: state => state.portraits,
+    email: state => state.email
   }
 };
