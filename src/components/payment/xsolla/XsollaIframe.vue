@@ -1,6 +1,7 @@
 <template>
   <modal
     name="xsolla-iframe"
+    @before-open="beforeOpen"
     transition="nice-modal-fade"
     classes="demo-modal-class"
     :min-width="200"
@@ -13,11 +14,7 @@
     width="90%"
     height="90%"
   >
-    <iframe
-      id="xsolla-iframe"
-      src="https://sandbox-secure.xsolla.com/paystation2/?access_token=zdpaSiSggsYtuGGM3B2xtlrxM0tg0CSN"
-      frameborder="0"
-    ></iframe>
+    <iframe id="xsolla-iframe" :src="iframeSrc" frameborder="0"></iframe>
   </modal>
 </template>
 
@@ -25,6 +22,24 @@
 //import AppData from "@/assets/app.json";
 export default {
   name: "XsollaIframe",
+  data() {
+    return {
+      token: null
+    };
+  },
+  computed: {
+    iframeSrc() {
+      return (
+        "https://sandbox-secure.xsolla.com/paystation2/?access_token=" +
+        this.token
+      );
+    }
+  },
+  methods: {
+    beforeOpen(event) {
+      this.token = event.params.token;
+    }
+  },
   beforeCreate() {},
   mounted() {
     /* eslint-disable */

@@ -17,27 +17,32 @@
       <!-- <p>{{ this.$store.getters.paymentTeaser }}</p> -->
       <div v-if="networkOnLine">
         <div class="gumroad-buttons">
-          <div v-if="!userEmail">
+          <div id="user-email" v-if="!userEmail">
             <label for="xsolla-email"
-              >Veuillez entrer votre email pour débloquer la suite de l'histoire
-              :</label
+              >Veuillez entrer votre email pour débloquer la suite de
+              l'histoire</label
             >
             <input
               type="email"
+              placeholder="Votre email"
               name="xsolla-email"
               id="xsolla-email"
               v-model="email"
             />
-            <button v-if="!gettingToken" @click="submitEmail"></button>
+            <button v-if="!gettingToken" @click="submitEmail">Envoyer</button>
             <progress
               v-if="gettingToken"
               class="pure-material-progress-circular"
             />
           </div>
-          +
+          <!-- <div v-if="token" id="buyNow" class="item button-jittery"> -->
+          <!-- <img src="@/assets/logo.svg" alt="logo application" /> -->
+          <!-- <h3>{{this.$store.getters.storyTitle}}</h3> -->
           <button v-if="token" @click="xsollaPayment">
             Acheter maintenant
           </button>
+          <!-- <div class="name">Subtlety</div>
+          </div>-->
           <!-- <GumroadOverlayButton /> -->
           <!-- <div id="xl_auth" style="height: 700px"></div> -->
           <!-- <XsollaPaymentButton /> -->
@@ -86,6 +91,27 @@ export default {
     };
   },
   mounted() {
+    if (this.email !== null) {
+      const url =
+        "https://us-central1-lise-story.cloudfunctions.net/xsollaTokenGeneration";
+      this.gettingToken = true;
+      const sku = this.$store.getters.xsollaId;
+      const project_id = this.$store.getters.appData.xsolla_project_id;
+      const email = this.email;
+      getXsollaToken(url, email, sku, project_id)
+        .then(response => response.json())
+        .then(result => {
+          this.token = result.token;
+          this.gettingToken = false;
+          this.$modal.show("xsolla-iframe", { token: this.token });
+        })
+        .catch(error => {
+          this.gettingToken = false;
+          /*eslint-disable */
+          this.$store.commit("setEmail", null);
+          console.error(error);
+        });
+    }
     /*eslint-disable */
     window.addEventListener("message", message => {
       //console.log(message);
@@ -144,7 +170,7 @@ export default {
     buyStory() {
       this.$store.dispatch("buyStory");
       this.$modal.hide("ask-for-payment");
-      this.$modal.hide("xsolla-frame");
+      this.$modal.hide("xsolla-iframe");
     },
     goHome() {
       //this.$modal.hide("ask-for-payment");
@@ -159,23 +185,80 @@ export default {
       const url =
         "https://us-central1-lise-story.cloudfunctions.net/xsollaTokenGeneration";
       this.gettingToken = true;
-      getXsollaToken(url, this.email)
+      const sku = this.$store.getters.xsollaId;
+      const project_id = this.$store.getters.appData.xsolla_project_id;
+      const email = this.$store.getters.email;
+      getXsollaToken(url, email, sku, project_id)
         .then(response => response.json())
         .then(result => {
-          this.$store.commit("xsollaToken", result.token);
+          this.token = result.token;
           this.gettingToken = false;
+          this.$modal.show("xsolla-iframe", { token: this.token });
         })
         .catch(error => {
           this.gettingToken = false;
+          /*eslint-disable */
+          this.$store.commit("setEmail", null);
           console.error(error);
         });
+    },
+    xsollaPayment() {
+      this.$modal.show("xsolla-iframe", { token: this.token });
     }
-  },
-  xsollaPayment() {
-    this.$modal.show("xsolla-iframe");
   }
 };
 </script>
 <style lang="scss">
 @import "@/theme/app/modals/modals.scss";
+
+// #buyNow {
+//   max-width: 100px;
+//   background-color: black;
+//   border-radius: 8%;
+//   margin: auto;
+//   img {
+//     max-width: 100px;
+//   }
+//   h4 {
+//     color: white;
+//     font-size: calc(0.5vw + 0.5vh + 0.2vmin);
+//   }
+#user-email {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  margin: auto;
+  label {
+    color: #565353;
+    font-size: calc(0.8vw + 0.8vh + 0.6vmin);
+    margin-bottom: 20px;
+  }
+  input {
+    padding: 10px 10px 10px 5px;
+    border-bottom: 1px solid #757575;
+    margin-bottom: 20px;
+  }
+
+  button {
+    margin-bottom: 20px;
+  }
+}
+
+button {
+  background: #f1c40f;
+  font-weight: bolder;
+  color: black;
+  border: 3px solid #fff;
+  border-radius: 50px;
+  padding: 0.8rem 2rem;
+  font: 24px;
+  outline: none;
+  // text-shadow: 1px 1px 1px black;
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s ease-in-out;
+  letter-spacing: 2px;
+}
+
+//}
 </style>

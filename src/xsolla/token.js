@@ -1,9 +1,9 @@
-function getXsollaToken(url, user_id) {
+function getXsollaToken(url, user_id, sku, project_id) {
   return fetch(url, {
     method: "POST",
     body: JSON.stringify({
-      sku: this.$store.getters.xsollaId,
-      project_id: this.$store.getters.appData.xsolla_project_id,
+      sku: sku,
+      project_id: project_id,
       user_id: user_id
     }),
     headers: {
