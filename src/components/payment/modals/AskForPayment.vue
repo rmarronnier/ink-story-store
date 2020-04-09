@@ -19,10 +19,9 @@
       <div v-if="networkOnLine">
         <div class="gumroad-buttons">
           <div id="user-email" v-if="!userEmail">
-            <label for="xsolla-email"
-              >Veuillez entrer votre email pour débloquer la suite de
-              l'histoire</label
-            >
+            <label for="xsolla-email">
+              Veuillez entrer votre email pour débloquer la suite de l'histoire
+            </label>
             <input
               type="email"
               placeholder="Votre email"
@@ -152,7 +151,7 @@ export default {
         const url =
           "https://us-central1-lise-story.cloudfunctions.net/xsollaTokenGeneration";
         this.gettingToken = true;
-        const sku = this.$store.getters.xsollaId;
+        const sku = this.$store.getters.xsollaSKU;
         const project_id = this.$store.getters.appData.xsolla_project_id;
         const email = this.email;
         getXsollaToken(url, email, sku, project_id)
@@ -188,7 +187,7 @@ export default {
       const url =
         "https://us-central1-lise-story.cloudfunctions.net/xsollaTokenGeneration";
       this.gettingToken = true;
-      const sku = this.$store.getters.xsollaId;
+      const sku = this.$store.getters.xsollaSKU;
       const project_id = this.$store.getters.appData.xsolla_project_id;
       const email = this.$store.getters.email;
       getXsollaToken(url, email, sku, project_id)

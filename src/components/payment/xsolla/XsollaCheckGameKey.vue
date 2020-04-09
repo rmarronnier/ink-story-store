@@ -1,12 +1,14 @@
 <template>
   <div id="licence-form">
-    <a id="licence-form-show" @click="showLicenceForm">Vous avez déjà acheté cette histoire ?</a>
+    <a id="licence-form-show" @click="showLicenceForm"
+      >Vous avez déjà acheté cette histoire ?</a
+    >
 
     <div class="licence-form" v-if="show">
       <div class="form-group">
         <label for="license-key">
-          Veuillez entrer votre clé de jeu qui vous a été envoyée par
-          Xsolla sur votre adresse email.
+          Veuillez entrer votre clé de jeu qui vous a été envoyée par Xsolla sur
+          votre adresse email.
         </label>
         <div id="input-licence-group">
           <input
@@ -56,7 +58,7 @@ export default {
           project_id: this.$store.getters.appData.xsolla_project_id,
           gamekey: key,
           user_id: this.$store.getters.email,
-          sku: this.$store.getters.xsollaId
+          sku: this.$store.getters.xsollaSKU
         }),
         headers: {
           "Content-Type": "application/json"

@@ -37,7 +37,7 @@ export default {
     //     },
     //     purchase: {
     //       pin_codes: {
-    //         codes: [{ digital_content: this.$store.getters.xsollaId }]
+    //         codes: [{ digital_content: this.$store.getters.xsollaSKU }]
     //       }
     //     },
     //     user: {
