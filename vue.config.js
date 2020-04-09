@@ -3,19 +3,19 @@ const AppData = require("./src/assets/app.json");
 
 module.exports = {
   // ...other vue-cli plugin options...
-  chainWebpack(config) {
-    config.module
-      .rule("md")
-      .test(/\.md/)
-      .use("vue-loader")
-      .loader("vue-loader")
-      .end()
-      .use("vue-markdown-loader")
-      .loader("vue-markdown-loader/lib/markdown-compiler")
-      .options({
-        raw: true
-      });
-  },
+  // chainWebpack(config) {
+  //   config.module
+  //     .rule("md")
+  //     .test(/\.md/)
+  //     .use("vue-loader")
+  //     .loader("vue-loader")
+  //     .end()
+  //     .use("vue-markdown-loader")
+  //     .loader("vue-markdown-loader/lib/markdown-compiler")
+  //     .options({
+  //       raw: true
+  //     });
+  // },
   pwa: {
     name: AppData.longName,
     themeColor: AppData.theme_color,
@@ -82,6 +82,20 @@ module.exports = {
   //     .use(require.resolve("html-loader"))
   //     .loader("html-loader")
   // },
+  // chainWebpack: config => {
+  //   config.plugin("html").tap(args => {
+  //     return [args,
+  //       {
+  //         "meta": {
+  //           "description": AppData.description
+  //         }
+  //       },
+  //       {
+  //         "title": AppData.shortName
+  //       },
+  //     ];
+  //   });
+  // }
   // configureWebpack: {
   //   plugins: [
   //     new webpack.LoaderOptionsPlugin({

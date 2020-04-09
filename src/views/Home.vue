@@ -45,9 +45,9 @@ export default {
     }
   },
   mounted() {
-    let gumroadScript = document.createElement("script");
-    gumroadScript.setAttribute("src", "https://gumroad.com/js/gumroad.js");
-    document.head.appendChild(gumroadScript);
+    // let gumroadScript = document.createElement("script");
+    // gumroadScript.setAttribute("src", "https://gumroad.com/js/gumroad.js");
+    // document.head.appendChild(gumroadScript);
 
     this.$modal.hide("ask-for-payment");
   }

@@ -17,7 +17,7 @@ export default {
     Vue.mixin({
       // Add component lifecycle hooks or properties.
       created() {
-        console.log("Hello from created hook!");
+        //console.log("Hello from created hook!");
       }
     });
     // Add Vue instance methods by attaching them to Vue.prototype.

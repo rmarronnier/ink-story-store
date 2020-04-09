@@ -41,6 +41,8 @@
           <button v-if="token" @click="xsollaPayment">
             Acheter maintenant
           </button>
+
+          <XsollaCheckGameKey v-if="userEmail" />
           <!-- <div class="name">Subtlety</div>
           </div>-->
           <!-- <GumroadOverlayButton /> -->
@@ -68,6 +70,7 @@
   </modal>
 </template>
 <script>
+import XsollaCheckGameKey from "@/components/payment/xsolla/XsollaCheckGameKey.vue";
 //import AppData from "@/assets/app.json";
 import { mapState } from "vuex";
 import getXsollaToken from "@/xsolla/token.js";
@@ -82,6 +85,7 @@ export default {
     //CheckLicenseKey,
     //XsollaPaymentButton,
     //XsollaIframe
+    XsollaCheckGameKey
   },
   data() {
     return {
@@ -95,46 +99,47 @@ export default {
     window.addEventListener("message", message => {
       //console.log(message);
       if (message.origin == "https://secure.xsolla.com") {
-        console.log(message.data);
+        //console.log(message.data);
         const messageDataObject = JSON.parse(message.data);
         if (messageDataObject.hasOwnProperty("action")) {
-          console.log("ACTIONNNNNN");
+          //console.log("ACTIONNNNNN");
           if (messageDataObject.action == "complete") {
-            console.log("DONNNE");
+            //console.log("DONNNE");
 
             this.$store.dispatch("buyStory");
             //show thank you note
             this.$modal.hide("ask-for-payment");
+            this.$modal.hide("xsolla-iframe");
           }
         }
       }
-      if (message.origin == "https://gumroad.com") {
-        var messageDataObject = JSON.parse(message.data);
-        let purchase = {
-          email: "",
-          licence_key: "",
-          permalink: ""
-        };
+      // if (message.origin == "https://gumroad.com") {
+      //   var messageDataObject = JSON.parse(message.data);
+      //   let purchase = {
+      //     email: "",
+      //     licence_key: "",
+      //     permalink: ""
+      //   };
 
-        let success = false;
-        if (messageDataObject.hasOwnProperty("email")) {
-          purchase.email = messageDataObject.email;
-        }
-        if (messageDataObject.hasOwnProperty("licence_key")) {
-          purchase.licence_key = messageDataObject.licence_key;
-        }
-        if (messageDataObject.hasOwnProperty("permalink")) {
-          purchase.permalink = messageDataObject.permalink;
-        }
-        if (messageDataObject.hasOwnProperty("success")) {
-          success = messageDataObject.success;
-        }
-        if (success) {
-          this.$store.dispatch("buyStory", purchase);
-          //show thank you note
-          this.$modal.hide("ask-for-payment");
-        }
-      }
+      //   let success = false;
+      //   if (messageDataObject.hasOwnProperty("email")) {
+      //     purchase.email = messageDataObject.email;
+      //   }
+      //   if (messageDataObject.hasOwnProperty("licence_key")) {
+      //     purchase.licence_key = messageDataObject.licence_key;
+      //   }
+      //   if (messageDataObject.hasOwnProperty("permalink")) {
+      //     purchase.permalink = messageDataObject.permalink;
+      //   }
+      //   if (messageDataObject.hasOwnProperty("success")) {
+      //     success = messageDataObject.success;
+      //   }
+      //   if (success) {
+      //     this.$store.dispatch("buyStory", purchase);
+      //     //show thank you note
+      //     this.$modal.hide("ask-for-payment");
+      //   }
+      // }
     });
     /*eslint-enable */
   },

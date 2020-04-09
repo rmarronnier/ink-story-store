@@ -7,8 +7,8 @@
     <div class="licence-form" v-if="show">
       <div class="form-group">
         <label for="license-key">
-          Veuillez entrer votre clé de jeu qui vous a été envoyée par Xsolla sur
-          votre adresse email.
+          Veuillez entrer votre code d'activation qui vous a été envoyée par
+          Xsolla sur votre adresse email.
         </label>
         <div id="input-licence-group">
           <input
@@ -26,7 +26,6 @@
       <p class="error-message">{{ error }}</p>
       <!-- <a href="https://gumroad.com/license-key-lookup" target="_blank"
       >Clé de license oubliée ou perdue ?</a-->
-      >
     </div>
   </div>
 </template>
@@ -70,6 +69,7 @@ export default {
           if (result.success) {
             this.$store.dispatch("buyStory");
             this.$modal.hide("ask-for-payment");
+            this.$modal.hide("xsolla-iframe");
             //this.choucroute = "Bonne clé, merci !!!";
           } else {
             this.error = "La clé entrée est invalide.";
