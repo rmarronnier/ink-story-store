@@ -1,6 +1,7 @@
 <template>
   <modal
     name="ask-for-payment"
+    @before-open="getToken"
     transition="nice-modal-fade"
     classes="demo-modal-class"
     :min-width="200"
@@ -91,31 +92,10 @@ export default {
     };
   },
   mounted() {
-    if (this.email !== null) {
-      const url =
-        "https://us-central1-lise-story.cloudfunctions.net/xsollaTokenGeneration";
-      this.gettingToken = true;
-      const sku = this.$store.getters.xsollaId;
-      const project_id = this.$store.getters.appData.xsolla_project_id;
-      const email = this.email;
-      getXsollaToken(url, email, sku, project_id)
-        .then(response => response.json())
-        .then(result => {
-          this.token = result.token;
-          this.gettingToken = false;
-          this.$modal.show("xsolla-iframe", { token: this.token });
-        })
-        .catch(error => {
-          this.gettingToken = false;
-          /*eslint-disable */
-          this.$store.commit("setEmail", null);
-          console.error(error);
-        });
-    }
     /*eslint-disable */
     window.addEventListener("message", message => {
       //console.log(message);
-      if (message.origin == "https://sandbox-secure.xsolla.com") {
+      if (message.origin == "https://secure.xsolla.com") {
         console.log(message.data);
         const messageDataObject = JSON.parse(message.data);
         if (messageDataObject.hasOwnProperty("action")) {
@@ -167,6 +147,29 @@ export default {
     userEmail: state => state.user.email
   }),
   methods: {
+    getToken() {
+      if (this.email !== null) {
+        const url =
+          "https://us-central1-lise-story.cloudfunctions.net/xsollaTokenGeneration";
+        this.gettingToken = true;
+        const sku = this.$store.getters.xsollaId;
+        const project_id = this.$store.getters.appData.xsolla_project_id;
+        const email = this.email;
+        getXsollaToken(url, email, sku, project_id)
+          .then(response => response.json())
+          .then(result => {
+            this.token = result.token;
+            this.gettingToken = false;
+            this.$modal.show("xsolla-iframe", { token: this.token });
+          })
+          .catch(error => {
+            this.gettingToken = false;
+            /*eslint-disable */
+            this.$store.commit("setEmail", null);
+            console.error(error);
+          });
+      }
+    },
     buyStory() {
       this.$store.dispatch("buyStory");
       this.$modal.hide("ask-for-payment");

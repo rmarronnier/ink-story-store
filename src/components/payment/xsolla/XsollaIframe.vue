@@ -30,8 +30,7 @@ export default {
   computed: {
     iframeSrc() {
       return (
-        "https://sandbox-secure.xsolla.com/paystation2/?access_token=" +
-        this.token
+        "https://secure.xsolla.com/paystation2/?access_token=" + this.token
       );
     }
   },

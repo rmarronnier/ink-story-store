@@ -12,7 +12,7 @@ export default {
   mounted() {
     /* eslint-disable */
     var options = {
-      sandbox: true,
+      sandbox: false,
       access_token: "zdpazHmA4KUsPookTDIOSGyQbGYhee8S",
       theme: {
         foreground: "green",
