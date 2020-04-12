@@ -87,16 +87,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
-a {
+a#licence-form-show {
   font-size: 14px;
   color: #604e4e;
-  text-decoration: none;
+  text-decoration: underline;
 }
 .licence-form {
   font-size: 20px;
   font-family: "Roboto";
   background: #fff;
   padding: 10px 20px 20px;
+
   .form-group {
     // position: relative;
     // margin-bottom: 45px;
