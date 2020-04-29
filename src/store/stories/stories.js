@@ -100,13 +100,13 @@ export default {
     processCurrentText({ commit, dispatch, state }) {
       const currentText = state.currentStory.currentText.trim();
       // Check if it is not a regular paragraph
-      if ([">>>", "!!!", ":::"].some(ident => currentText.includes(ident))) {
+      if ([">>>", "[!!!]", ":::"].some(ident => currentText.includes(ident))) {
         // Check if an input is required
         if (currentText.includes(">>>")) {
           dispatch("processInput", currentText);
         }
         // Check if it is a cover
-        if (currentText.includes("!!!")) {
+        if (currentText.includes("[!!!]")) {
           dispatch("processCover", currentText);
         }
         // Check if it is a speech

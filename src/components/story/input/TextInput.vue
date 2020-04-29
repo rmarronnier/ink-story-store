@@ -45,7 +45,7 @@ export default {
         value: value
           .trim()
           .replace(">>>", "")
-          .replace("!!!", "")
+          .replace("[!!!]", "")
           .replace(":::", "") // DIRTY sanitizer
       });
       this.inputValue = null;

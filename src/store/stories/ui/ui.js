@@ -110,7 +110,7 @@ export default {
       });
     },
     processCover({ commit }, paragraph) {
-      let coverContent = paragraph.slice(paragraph.indexOf("!!!") + 3).trim();
+      let coverContent = paragraph.slice(paragraph.indexOf("[!!!]") + 5).trim();
       commit("clearParagraph");
       commit("clearInput");
       commit("clearSpeech");
