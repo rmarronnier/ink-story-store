@@ -9,9 +9,7 @@
       <article>
         <h2>{{ storyTitle(json) }}</h2>
         <p>{{ teaserText(json) }}</p>
-        <button class="lined thin" @click="choose(storyId)">
-          Lancer l'histoire
-        </button>
+        <button class="lined thin" @click="choose(storyId)">Lancer l'histoire</button>
       </article>
     </section>
   </main>
@@ -22,7 +20,18 @@ import getGlobalTagValueFromDownloaded from "@/story/downloaded";
 export default {
   name: "StoryMenu",
   components: {},
-  mounted() {},
+  mounted() {
+    if (this.$route.query.product_permalink != null) {
+      const gumroadPermalink = this.$route.query.product_permalink;
+      const stories = this.$store.getters.downloaded;
+      const storyBought = Object.keys(stories).find(
+        key =>
+          getGlobalTagValueFromDownloaded(stories[key], "gumroad-permalink") ===
+          gumroadPermalink
+      );
+      this.$store.commit("addStoryBought", storyBought);
+    }
+  },
   computed: {
     stories() {
       return this.$store.getters.downloaded;
