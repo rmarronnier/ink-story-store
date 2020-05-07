@@ -85,58 +85,56 @@ export default {
   },
   data() {
     return {
-      email: this.$store.getters.email,
-      token: null,
-      gettingToken: false
+      // email: this.$store.getters.email,
+      // token: null,
+      // gettingToken: false
     };
   },
   mounted() {
     /*eslint-disable */
-    window.addEventListener("message", message => {
-      //console.log(message);
-      // if (message.origin == "https://secure.xsolla.com") {
-      //   //console.log(message.data);
-      //   const messageDataObject = JSON.parse(message.data);
-      //   if (messageDataObject.hasOwnProperty("action")) {
-      //     //console.log("ACTIONNNNNN");
-      //     if (messageDataObject.action == "complete") {
-      //       //console.log("DONNNE");
-
-      //       this.$store.dispatch("buyStory");
-      //       //show thank you note
-      //       this.$modal.hide("ask-for-payment");
-      //       this.$modal.hide("xsolla-iframe");
-      //     }
-      //   }
-      // }
-      if (message.origin == "https://gumroad.com") {
-        var messageDataObject = JSON.parse(message.data);
-        let purchase = {
-          email: "",
-          licence_key: "",
-          permalink: ""
-        };
-
-        let success = false;
-        if (messageDataObject.hasOwnProperty("email")) {
-          purchase.email = messageDataObject.email;
-        }
-        if (messageDataObject.hasOwnProperty("licence_key")) {
-          purchase.licence_key = messageDataObject.licence_key;
-        }
-        if (messageDataObject.hasOwnProperty("permalink")) {
-          purchase.permalink = messageDataObject.permalink;
-        }
-        if (messageDataObject.hasOwnProperty("success")) {
-          success = messageDataObject.success;
-        }
-        if (success) {
-          this.$store.dispatch("buyStory", purchase);
-          //show thank you note
-          this.$modal.hide("ask-for-payment");
-        }
-      }
-    });
+    // window.addEventListener("message", message => {
+    //console.log(message);
+    // if (message.origin == "https://secure.xsolla.com") {
+    //   //console.log(message.data);
+    //   const messageDataObject = JSON.parse(message.data);
+    //   if (messageDataObject.hasOwnProperty("action")) {
+    //     //console.log("ACTIONNNNNN");
+    //     if (messageDataObject.action == "complete") {
+    //       //console.log("DONNNE");
+    //       this.$store.dispatch("buyStory");
+    //       //show thank you note
+    //       this.$modal.hide("ask-for-payment");
+    //       this.$modal.hide("xsolla-iframe");
+    //     }
+    //   }
+    // }
+    // if (message.origin == "https://gumroad.com") {
+    //   var messageDataObject = JSON.parse(message.data);
+    //   let purchase = {
+    //     email: "",
+    //     licence_key: "",
+    //     permalink: ""
+    //   };
+    //   let success = false;
+    //   if (messageDataObject.hasOwnProperty("email")) {
+    //     purchase.email = messageDataObject.email;
+    //   }
+    //   if (messageDataObject.hasOwnProperty("licence_key")) {
+    //     purchase.licence_key = messageDataObject.licence_key;
+    //   }
+    //   if (messageDataObject.hasOwnProperty("permalink")) {
+    //     purchase.permalink = messageDataObject.permalink;
+    //   }
+    //   if (messageDataObject.hasOwnProperty("success")) {
+    //     success = messageDataObject.success;
+    //   }
+    //   if (success) {
+    //     this.$store.dispatch("buyStory", purchase);
+    //     //show thank you note
+    //     this.$modal.hide("ask-for-payment");
+    //   }
+    // }
+    // });
     /*eslint-enable */
   },
   computed: mapState({
@@ -196,22 +194,6 @@ export default {
   button {
     margin-bottom: 20px;
   }
-}
-
-button {
-  background: #f1c40f;
-  font-weight: bolder;
-  color: black;
-  border: 3px solid #fff;
-  border-radius: 50px;
-  padding: 0.8rem 2rem;
-  font: 24px;
-  outline: none;
-  // text-shadow: 1px 1px 1px black;
-  cursor: pointer;
-  position: relative;
-  transition: 0.2s ease-in-out;
-  letter-spacing: 2px;
 }
 
 //}
