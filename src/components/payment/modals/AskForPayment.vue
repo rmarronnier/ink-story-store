@@ -18,7 +18,7 @@
       <!-- <p>{{ this.$store.getters.paymentTeaser }}</p> -->
       <div v-if="networkOnLine">
         <div class="gumroad-buttons">
-          <div id="user-email" v-if="!userEmail">
+          <!-- <div id="user-email" v-if="!userEmail">
             <label for="xsolla-email">
               Veuillez entrer votre email pour débloquer la suite de l'histoire
             </label>
@@ -34,22 +34,22 @@
               v-if="gettingToken"
               class="pure-material-progress-circular"
             />
-          </div>
+          </div>-->
           <!-- <div v-if="token" id="buyNow" class="item button-jittery"> -->
           <!-- <img src="@/assets/logo.svg" alt="logo application" /> -->
           <!-- <h3>{{this.$store.getters.storyTitle}}</h3> -->
-          <button v-if="token" @click="xsollaPayment">
+          <!-- <button v-if="token" @click="xsollaPayment">
             Acheter maintenant
-          </button>
+          </button>-->
 
-          <XsollaCheckGameKey v-if="userEmail" />
+          <!-- <XsollaCheckGameKey v-if="userEmail" /> -->
           <!-- <div class="name">Subtlety</div>
           </div>-->
-          <!-- <GumroadOverlayButton /> -->
+          <GumroadOverlayButton />
           <!-- <div id="xl_auth" style="height: 700px"></div> -->
           <!-- <XsollaPaymentButton /> -->
           <!-- <XsollaIframe /> -->
-          <!-- <CheckLicenseKey /> -->
+          <CheckLicenseKey />
         </div>
       </div>
       <div v-else>
@@ -59,88 +59,82 @@
         </p>
       </div>
       <div class="modal-buttons">
-        <button class="skewBtn blue" @click="goHome">
-          Revenir à l'accueil
-        </button>
-        <button class="skewBtn brick" @click="startOver">
-          Recommencer l'histoire
-        </button>
+        <button class="skewBtn blue" @click="goHome">Revenir à l'accueil</button>
+        <button class="skewBtn brick" @click="startOver">Recommencer l'histoire</button>
       </div>
     </article>
   </modal>
 </template>
 <script>
-import XsollaCheckGameKey from "@/components/payment/xsolla/XsollaCheckGameKey.vue";
+//import XsollaCheckGameKey from "@/components/payment/xsolla/XsollaCheckGameKey.vue";
 //import AppData from "@/assets/app.json";
 import { mapState } from "vuex";
-import getXsollaToken from "@/xsolla/token.js";
-//import GumroadOverlayButton from "@/components/payment/gumroad/GumroadOverlayButton.vue";
+//import getXsollaToken from "@/xsolla/token.js";
+import GumroadOverlayButton from "@/components/payment/gumroad/GumroadOverlayButton.vue";
 //import XsollaPaymentButton from "@/components/payment/xsolla/XsollaPaymentButton.vue";
 //import { Widget } from "@xsolla-login/sdk";
-//import CheckLicenseKey from "@/components/payment/gumroad/CheckLicenseKey.vue";
+import CheckLicenseKey from "@/components/payment/gumroad/CheckLicenseKey.vue";
 export default {
   name: "AskForPayment",
   components: {
-    //GumroadOverlayButton,
-    //CheckLicenseKey,
+    GumroadOverlayButton,
+    CheckLicenseKey
     //XsollaPaymentButton,
     //XsollaIframe
-    XsollaCheckGameKey
+    //XsollaCheckGameKey
   },
   data() {
     return {
-      email: this.$store.getters.email,
-      token: null,
-      gettingToken: false
+      // email: this.$store.getters.email,
+      // token: null,
+      // gettingToken: false
     };
   },
   mounted() {
     /*eslint-disable */
-    window.addEventListener("message", message => {
-      //console.log(message);
-      if (message.origin == "https://secure.xsolla.com") {
-        //console.log(message.data);
-        const messageDataObject = JSON.parse(message.data);
-        if (messageDataObject.hasOwnProperty("action")) {
-          //console.log("ACTIONNNNNN");
-          if (messageDataObject.action == "complete") {
-            //console.log("DONNNE");
-
-            this.$store.dispatch("buyStory");
-            //show thank you note
-            this.$modal.hide("ask-for-payment");
-            this.$modal.hide("xsolla-iframe");
-          }
-        }
-      }
-      // if (message.origin == "https://gumroad.com") {
-      //   var messageDataObject = JSON.parse(message.data);
-      //   let purchase = {
-      //     email: "",
-      //     licence_key: "",
-      //     permalink: ""
-      //   };
-
-      //   let success = false;
-      //   if (messageDataObject.hasOwnProperty("email")) {
-      //     purchase.email = messageDataObject.email;
-      //   }
-      //   if (messageDataObject.hasOwnProperty("licence_key")) {
-      //     purchase.licence_key = messageDataObject.licence_key;
-      //   }
-      //   if (messageDataObject.hasOwnProperty("permalink")) {
-      //     purchase.permalink = messageDataObject.permalink;
-      //   }
-      //   if (messageDataObject.hasOwnProperty("success")) {
-      //     success = messageDataObject.success;
-      //   }
-      //   if (success) {
-      //     this.$store.dispatch("buyStory", purchase);
-      //     //show thank you note
-      //     this.$modal.hide("ask-for-payment");
-      //   }
-      // }
-    });
+    // window.addEventListener("message", message => {
+    //console.log(message);
+    // if (message.origin == "https://secure.xsolla.com") {
+    //   //console.log(message.data);
+    //   const messageDataObject = JSON.parse(message.data);
+    //   if (messageDataObject.hasOwnProperty("action")) {
+    //     //console.log("ACTIONNNNNN");
+    //     if (messageDataObject.action == "complete") {
+    //       //console.log("DONNNE");
+    //       this.$store.dispatch("buyStory");
+    //       //show thank you note
+    //       this.$modal.hide("ask-for-payment");
+    //       this.$modal.hide("xsolla-iframe");
+    //     }
+    //   }
+    // }
+    // if (message.origin == "https://gumroad.com") {
+    //   var messageDataObject = JSON.parse(message.data);
+    //   let purchase = {
+    //     email: "",
+    //     licence_key: "",
+    //     permalink: ""
+    //   };
+    //   let success = false;
+    //   if (messageDataObject.hasOwnProperty("email")) {
+    //     purchase.email = messageDataObject.email;
+    //   }
+    //   if (messageDataObject.hasOwnProperty("licence_key")) {
+    //     purchase.licence_key = messageDataObject.licence_key;
+    //   }
+    //   if (messageDataObject.hasOwnProperty("permalink")) {
+    //     purchase.permalink = messageDataObject.permalink;
+    //   }
+    //   if (messageDataObject.hasOwnProperty("success")) {
+    //     success = messageDataObject.success;
+    //   }
+    //   if (success) {
+    //     this.$store.dispatch("buyStory", purchase);
+    //     //show thank you note
+    //     this.$modal.hide("ask-for-payment");
+    //   }
+    // }
+    // });
     /*eslint-enable */
   },
   computed: mapState({
@@ -151,33 +145,9 @@ export default {
     userEmail: state => state.user.email
   }),
   methods: {
-    getToken() {
-      if (this.email !== null) {
-        const url =
-          "https://us-central1-lise-story.cloudfunctions.net/xsollaTokenGeneration";
-        this.gettingToken = true;
-        const sku = this.$store.getters.xsollaSKU;
-        const project_id = this.$store.getters.appData.xsolla_project_id;
-        const email = this.email;
-        getXsollaToken(url, email, sku, project_id)
-          .then(response => response.json())
-          .then(result => {
-            this.token = result.token;
-            this.gettingToken = false;
-            this.$modal.show("xsolla-iframe", { token: this.token });
-          })
-          .catch(error => {
-            this.gettingToken = false;
-            /*eslint-disable */
-            this.$store.commit("setEmail", null);
-            console.error(error);
-          });
-      }
-    },
     buyStory() {
       this.$store.dispatch("buyStory");
       this.$modal.hide("ask-for-payment");
-      this.$modal.hide("xsolla-iframe");
     },
     goHome() {
       //this.$modal.hide("ask-for-payment");
@@ -186,31 +156,6 @@ export default {
     },
     startOver() {
       this.$store.dispatch("startOver");
-    },
-    submitEmail() {
-      this.$store.commit("setEmail", this.email);
-      const url =
-        "https://us-central1-lise-story.cloudfunctions.net/xsollaTokenGeneration";
-      this.gettingToken = true;
-      const sku = this.$store.getters.xsollaSKU;
-      const project_id = this.$store.getters.appData.xsolla_project_id;
-      const email = this.$store.getters.email;
-      getXsollaToken(url, email, sku, project_id)
-        .then(response => response.json())
-        .then(result => {
-          this.token = result.token;
-          this.gettingToken = false;
-          this.$modal.show("xsolla-iframe", { token: this.token });
-        })
-        .catch(error => {
-          this.gettingToken = false;
-          /*eslint-disable */
-          this.$store.commit("setEmail", null);
-          console.error(error);
-        });
-    },
-    xsollaPayment() {
-      this.$modal.show("xsolla-iframe", { token: this.token });
     }
   }
 };
@@ -249,22 +194,6 @@ export default {
   button {
     margin-bottom: 20px;
   }
-}
-
-button {
-  background: #f1c40f;
-  font-weight: bolder;
-  color: black;
-  border: 3px solid #fff;
-  border-radius: 50px;
-  padding: 0.8rem 2rem;
-  font: 24px;
-  outline: none;
-  // text-shadow: 1px 1px 1px black;
-  cursor: pointer;
-  position: relative;
-  transition: 0.2s ease-in-out;
-  letter-spacing: 2px;
 }
 
 //}

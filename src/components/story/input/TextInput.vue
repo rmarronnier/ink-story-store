@@ -1,5 +1,6 @@
 <template>
   <form
+    id="textInput"
     class="input-modal-content TextInput"
     @submit.prevent="submitInput(inputValue, input.variable)"
   >
@@ -12,6 +13,7 @@
       v-model="inputValue"
       :placeholder="defaultValue"
     />
+    <button type="submit" form="textInput">Valider</button>
   </form>
 </template>
 
@@ -92,6 +94,23 @@ form.input-modal-content {
   }
   input:hover {
     border-color: #dddddd;
+  }
+  button {
+    display: inline-block;
+
+    margin: 0 0.3em 0.3em 0;
+    border: 0.16em solid #ffffff;
+    padding: 0.5em;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    color: #ffffff;
+    transition: all 0.15s;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: visible;
+    //font-size: 2vw;
+    font-size: calc(1.5vw + 1.5vh + 0.5vmin);
+    text-align: center;
   }
 }
 </style>

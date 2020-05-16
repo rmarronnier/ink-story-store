@@ -1,8 +1,6 @@
 <template>
   <div id="licence-form">
-    <a id="licence-form-show" @click="showLicenceForm"
-      >Vous avez déjà acheté cette histoire ?</a
-    >
+    <a id="licence-form-show" @click="showLicenceForm">Vous avez déjà acheté cette histoire ?</a>
 
     <div class="licence-form" v-if="show">
       <div class="form-group">
@@ -24,9 +22,10 @@
       </div>
 
       <p class="error-message">{{ error }}</p>
-      <a href="https://gumroad.com/license-key-lookup" target="_blank"
-        >Clé de license oubliée ou perdue ?</a
-      >
+      <a
+        href="https://gumroad.com/license-key-lookup"
+        target="_blank"
+      >Clé de license oubliée ou perdue ?</a>
     </div>
   </div>
 </template>
@@ -86,9 +85,9 @@ export default {
 
 <style scoped lang="scss">
 a {
-  font-size: 14px;
+  font-size: 18px;
   color: #604e4e;
-  text-decoration: none;
+  text-decoration: underline;
 }
 .licence-form {
   font-size: 20px;
