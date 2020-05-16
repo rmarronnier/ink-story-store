@@ -35,8 +35,8 @@ a.gumroad-button {
   color: black;
   border: 3px solid #fff;
   border-radius: 50px;
-  padding: 0.8rem 2rem;
-  font-size: 24px;
+  padding: 0.8rem calc(0.8vw + 0.8vh + 0.6vmin);
+  font-size: calc(0.8vw + 0.8vh + 0.6vmin);
   outline: none;
   // text-shadow: 1px 1px 1px black;
   cursor: pointer;
@@ -44,5 +44,7 @@ a.gumroad-button {
   transition: 0.2s ease-in-out;
   letter-spacing: 2px;
   margin-top: 15px;
+  margin-bottom: 15px;
+  text-decoration: none;
 }
 </style>
