@@ -1,12 +1,13 @@
 <template>
   <div id="background">
     <transition name="fade" mode="out-in">
-      <img
+      <PixiCanvas v-if="test" />
+      <!-- <img
         v-if="this.$store.getters.backgroundImage != null"
         :src="backgroundImageURL"
         :key="backgroundImageURL"
         alt="background image"
-      />
+      />-->
       <video
         v-else-if="this.$store.getters.backgroundVideo != null"
         :src="backgroundVideoURL"
@@ -24,10 +25,17 @@
 </template>
 
 <script>
+import PixiCanvas from "@/components/story/PixiCanvas.vue";
+
 export default {
   name: "Background",
+  components: {
+    PixiCanvas
+  },
   data() {
-    return {};
+    return {
+      test: true
+    };
   },
   computed: {
     backgroundImageURL() {
