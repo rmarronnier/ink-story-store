@@ -1,11 +1,10 @@
-# ingame menu
+# Assets dynamic loading (displays progress bar) . per story assets manifest (generated on build)
+# Xsolla cleanup
+# Pixi canvas for background
 # modals
 # icons
 # sounds ?
 # widget pour installer app sur Ios
-# gumroad ios bug ?
-# bunnyCDN assets linking
-# change !!! cover syntax to [!!!]
 # Dynamically generated jsonld
 # Add splash screen component (used when launching a story with infos about author, title, etc...)
 # fix transitions
@@ -21,6 +20,16 @@
 # /story url rewriting
 # Get number of steps from story and display a progression bar in story menu
 # Make the story component a npm package or bit.dev
+
+
+## Post Lise Marcy features
+# User Auth
+# Stripe payment
+
+# change !!! cover syntax to [!!!]
+# bunnyCDN assets linking
+# ingame menu
+# gumroad ios bug ?
 # ~~ footer ~~
 # ~~ header (logo size) ~~
 # ~~ /story route guard if ui is not ready (story not chosen) ~~

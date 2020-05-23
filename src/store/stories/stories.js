@@ -9,6 +9,10 @@ export default {
   },
   state: {
     downloaded: null,
+    backgrounds: null,
+    // backgrounds: {
+    //   "events-tome-1": [require("@/assets/stories/events-tome-1/images/backgrounds/Spencers.jpg")]
+    // },
     inkEngine: null,
     currentStory: null,
     storyId: null
@@ -16,6 +20,9 @@ export default {
   mutations: {
     saveStories(state, downloaded) {
       state.downloaded = downloaded;
+    },
+    saveBackgroundsPaths(state, backgroundsPaths) {
+      state.backgrounds = backgroundsPaths;
     },
     saveInkEngine(state, inkEngine) {
       state.inkEngine = inkEngine;
@@ -52,6 +59,11 @@ export default {
       import("@/story/json.js").then(downloaded => {
         commit("saveStories", downloaded.default);
       });
+      import("@/story/backgrounds.js").then(backgrounds => {
+        console.log(backgrounds.default)
+        commit("saveBackgroundsPaths", backgrounds.default);
+      });
+
     },
     downloadInkEngine({ commit }) {
       import("@/story/engine.js").then(downloaded => {
@@ -163,6 +175,7 @@ export default {
   },
   getters: {
     downloaded: state => state.downloaded,
+    backgrounds: state => state.backgrounds,
     currentStory: state => state.currentStory,
     paymentAsked: state => state.currentStory.variablesState["paymentAsked"],
     paymentTeaser: state => state.currentStory.variablesState["paymentTeaser"],
