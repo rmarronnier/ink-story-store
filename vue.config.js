@@ -1,5 +1,59 @@
-// Inside vue.config.js
 const AppData = require("./src/assets/app.json");
+
+
+// media.json generation
+
+// delete existing media.json
+
+// List all stories/..
+
+var mediajson = {}
+
+//const { readdirSync } = require('fs')
+const fs = require('fs');
+
+function getDirectories(path) {
+  return fs.readdirSync(path).filter(function (file) {
+    return fs.statSync(path + '/' + file).isDirectory();
+  });
+}
+
+var stories = []
+stories = getDirectories("src/assets/stories");
+console.log(stories)
+// stories = source =>
+//   readdirSync(source, { withFileTypes: true })
+//     .filter(dirent => dirent.isDirectory())
+//     .map(dirent => dirent.name)
+
+//requiring path and fs modules
+const path = require('path');
+//const fs = require('fs');
+//joining path of directory 
+stories.forEach(storyId => {
+  console.log(storyId)
+  const backgroundsPath = "src/assets/stories/" + storyId + "/images/backgrounds";
+  //const directoryPath = path.join(__dirname, 'src/assets/stories/${storyId}/images/backgrounds');
+  //passsing directoryPath and callback function
+  fs.readdir(backgroundsPath, function (err, files) {
+    console.log(files)
+    //handling error
+    if (err) {
+      return console.log('Unable to scan directory: ' + err);
+    }
+    mediajson[storyId] = files;
+
+    fs.writeFile("src/assets/media.json", JSON.stringify(mediajson), function (err) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log("The file was saved!");
+    });
+
+  });
+});
+
+
 
 module.exports = {
   // ...other vue-cli plugin options...

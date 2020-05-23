@@ -6,28 +6,10 @@
 
 <script>
 import * as PIXI from "pixi.js";
+import { MotionBlurFilter } from "@pixi/filter-motion-blur";
 
 export default {
   name: "PixiCanvas",
-  data() {
-    return {
-      //   // These need to be contained in an object because providers are not reactive.
-      //   PIXIWrapper: {
-      //     // Expose PIXI and the created app to all descendants.
-      //     PIXI,
-      //     PIXIApp: null
-      //   },
-      //   // Expose the event bus to all descendants so they can listen for the app-ready event.
-      //   EventBus: new Vue()
-    };
-  },
-  // Allows descendants to inject everything.
-  // provide() {
-  //   return {
-  //     PIXIWrapper: this.PIXIWrapper,
-  //     EventBus: this.EventBus
-  //   };
-  // },
 
   mounted() {
     let type = "WebGL";
@@ -58,18 +40,35 @@ export default {
     app.renderer.autoResize = true;
     app.renderer.resize(window.innerWidth, window.innerHeight);
     const storyId = this.$store.getters.storyId;
-    // const backgrounds = this.$store.getters.backgrounds[storyId].map(filename =>
-    //   require(`@/assets/stories/${storyId}/images/backgrounds/${filename}`)
-    // );
+    const backgrounds = this.$store.getters.backgrounds[storyId].map(filename =>
+      require(`@/assets/stories/${storyId}/images/backgrounds/${filename}`)
+    );
     const picture = require(`@/assets/stories/${storyId}/images/backgrounds/${this.$store.getters.backgroundImage}`);
-    const texture = PIXI.Texture.from(picture);
-    console.log(texture);
-    // // app.loader.add(backgrounds).load((loader, resources) => {
-    // //   const background = new PIXI.Sprite(resources[""].texture);
-    // //   app.stage.addChild(background);
-    // // });
-    const background = new PIXI.Sprite(texture);
-    app.stage.addChild(background);
+    //const texture = PIXI.Texture.from(picture);
+    //console.log(texture);
+    app.loader.add(backgrounds).load((loader, resources) => {
+      const background = new PIXI.Sprite(resources[picture].texture);
+      background.width = app.renderer.width;
+      background.height = app.renderer.height;
+      app.stage.addChild(background);
+    });
+
+    app.stage.filters = [new MotionBlurFilter([1, 45])];
+
+    this.$store.watch(
+      () => this.$store.getters.backgroundImage,
+      newBackground => {
+        console.log("watched: ", newBackground);
+        newBackground = require(`@/assets/stories/${storyId}/images/backgrounds/${newBackground}`);
+        app.loader.load((loader, resources) => {
+          const background = new PIXI.Sprite(resources[newBackground].texture);
+          background.width = app.renderer.width;
+          background.height = app.renderer.height;
+          app.stage.addChild(background);
+        });
+      },
+      { deep: true }
+    );
   }
 };
 </script>

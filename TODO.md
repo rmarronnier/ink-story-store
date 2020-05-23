@@ -1,4 +1,7 @@
 # Assets dynamic loading (displays progress bar) . per story assets manifest (generated on build)
+# Adds a "story bought" badge to already bought stories on storiesmenus teasers.
+# Replaces "Lancer l'histoire" par "Continuer la lecture" if a savestate is present in local storage.
+# Displays useful error message when stories can't download (add a timeout) => for fb internal browser 
 # Xsolla cleanup
 # Pixi canvas for background
 # modals
