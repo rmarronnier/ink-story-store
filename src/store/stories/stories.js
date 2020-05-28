@@ -10,9 +10,8 @@ export default {
   state: {
     downloaded: null,
     backgrounds: null,
-    // backgrounds: {
-    //   "events-tome-1": [require("@/assets/stories/events-tome-1/images/backgrounds/Spencers.jpg")]
-    // },
+    assetsLoaded: null,
+    pixiLoader: null,
     inkEngine: null,
     currentStory: null,
     storyId: null
@@ -23,6 +22,12 @@ export default {
     },
     saveBackgroundsPaths(state, backgroundsPaths) {
       state.backgrounds = backgroundsPaths;
+    },
+    registerAssetsLoadState(state, storyId) {
+      state.assetsLoaded = storyId;
+    },
+    savePixiLoader(state, pixiLoader) {
+      state.pixiLoader = pixiLoader;
     },
     saveInkEngine(state, inkEngine) {
       state.inkEngine = inkEngine;
@@ -184,6 +189,8 @@ export default {
       !state.currentStory.variablesState["storyBought"] &&
       state.currentStory.variablesState["paymentAsked"],
     isStoryLoaded: state => !(state.currentStory == null),
+    areAssetsLoaded: state => state.assetsLoaded == state.storyId && state.pixiLoader != null,
+    pixiLoader: state => state.pixiLoader,
     storyId: state => state.storyId,
     storyAssetsURL: state => "/assets/stories/" + state.storyId,
     gumroadPermalink: state =>
