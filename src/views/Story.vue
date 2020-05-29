@@ -5,12 +5,14 @@
     <TextBox v-if="hasText" />
     <InputModal v-if="inputModalData" />
     <Cover v-if="cover" />
+    <LoadingScreen v-if="!isStoryUIready" />
     <InGameMenu class="in-game-menu" />
   </section>
 </template>
 
 <script>
 import Background from "@/components/story/Background.vue";
+import LoadingScreen from "@/components/story/LoadingScreen.vue";
 import InGameMenu from "@/components/story/InGameMenu.vue";
 import TextBox from "@/components/story/TextBox.vue";
 import InputModal from "@/components/story/InputModal.vue";
@@ -23,7 +25,8 @@ export default {
     Background,
     TextBox,
     InputModal,
-    Cover
+    Cover,
+    LoadingScreen
   },
   data() {
     return {
@@ -79,8 +82,7 @@ export default {
   //   this.shouldShowPaymentAskedModal = this.$store.getters.shouldShowPaymentAskedModal;
   // },
   mounted() {
-    if (this.$store.getters.isStoryUIready == false) {
-      //console.log("We should really go home");
+    if (this.$store.getters.currentStory == null) {
       this.$router.push("/");
     }
     if (this.$store.getters.shouldShowPaymentAskedModal) {
@@ -99,7 +101,8 @@ export default {
       "inputModalData",
       "cover",
       "hasText",
-      "shouldShowPaymentAskedModal" // TODO : make this a payment plugin
+      "shouldShowPaymentAskedModal",
+      "isStoryUIready" // TODO : make this a payment plugin
     ])
   },
   watch: {
@@ -178,6 +181,18 @@ export default {
   align-items: center;
   position: fixed;
   z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+#loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
   top: 0;
   left: 0;
   width: 100vw;

@@ -12,6 +12,7 @@ export default {
   name: "PixiCanvas",
 
   mounted() {
+    this.$store.commit("storyUIready", false);
     let type = "WebGL";
     if (!PIXI.utils.isWebGLSupported()) {
       type = "canvas";
@@ -64,6 +65,7 @@ export default {
       background.width = app.renderer.width;
       background.height = app.renderer.height;
       app.stage.addChild(background);
+      this.$store.commit("storyUIready", true);
     });
 
     app.stage.filters = [new MotionBlurFilter([1, 45])];

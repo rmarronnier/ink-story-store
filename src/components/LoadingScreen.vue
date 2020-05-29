@@ -17,7 +17,7 @@ body {
 }
 
 #loading-screen {
-  background-color: #63ab97;
+  background-color: #493c50ff;
   color: white;
   font-size: 32px;
   padding-top: 10vh;
