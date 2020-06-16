@@ -1,48 +1,45 @@
 const AppData = require("./src/assets/app.json");
 
-
 // media.json generation
 
+var mediajson = {};
 
-var mediajson = {}
-
-const fs = require('fs');
+const fs = require("fs");
 
 function getDirectories(path) {
-  return fs.readdirSync(path).filter(function (file) {
-    return fs.statSync(path + '/' + file).isDirectory();
+  return fs.readdirSync(path).filter(function(file) {
+    return fs.statSync(path + "/" + file).isDirectory();
   });
 }
 
-var stories = []
+var stories = [];
 stories = getDirectories("src/assets/stories");
 
-
 //requiring path and fs modules
-const path = require('path');
+const path = require("path");
 
 stories.forEach(storyId => {
-  console.log(storyId)
-  const backgroundsPath = "src/assets/stories/" + storyId + "/images/backgrounds";
-  fs.readdir(backgroundsPath, function (err, files) {
-    console.log(files)
+  console.log(storyId);
+  const backgroundsPath =
+    "src/assets/stories/" + storyId + "/images/backgrounds";
+  fs.readdir(backgroundsPath, function(err, files) {
+    console.log(files);
     //handling error
     if (err) {
-      return console.log('Unable to scan directory: ' + err);
+      return console.log("Unable to scan directory: " + err);
     }
     mediajson[storyId] = files;
 
-    fs.writeFile("src/assets/media.json", JSON.stringify(mediajson), function (err) {
+    fs.writeFile("src/assets/media.json", JSON.stringify(mediajson), function(
+      err
+    ) {
       if (err) {
         return console.log(err);
       }
       console.log("The file was saved!");
     });
-
   });
 });
-
-
 
 module.exports = {
   // ...other vue-cli plugin options...

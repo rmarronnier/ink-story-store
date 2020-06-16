@@ -9,7 +9,9 @@
       <article>
         <h2>{{ storyTitle(json) }}</h2>
         <p>{{ teaserText(json) }}</p>
-        <button class="lined thin" @click="choose(storyId)">Lancer l'histoire</button>
+        <button class="lined thin" @click="choose(storyId)">
+          Lancer l'histoire
+        </button>
       </article>
     </section>
   </main>

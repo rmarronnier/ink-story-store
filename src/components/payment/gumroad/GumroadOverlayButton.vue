@@ -4,7 +4,8 @@
       class="gumroad-button"
       :href="gumroadLink"
       data-gumroad-single-product="true"
-    >Débloquer l'histoire</a>
+      >Débloquer l'histoire</a
+    >
   </div>
 </template>
 

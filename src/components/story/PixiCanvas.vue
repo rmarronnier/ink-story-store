@@ -6,7 +6,7 @@
 
 <script>
 import * as PIXI from "pixi.js";
-import { MotionBlurFilter } from "@pixi/filter-motion-blur";
+//import { MotionBlurFilter } from "@pixi/filter-motion-blur";
 
 export default {
   name: "PixiCanvas",
@@ -68,18 +68,30 @@ export default {
       this.$store.commit("storyUIready", true);
     });
 
-    app.stage.filters = [new MotionBlurFilter([1, 45])];
+    //app.stage.filters = [new MotionBlurFilter([1, 45])];
 
     this.$store.watch(
       () => this.$store.getters.backgroundImage,
       newBackground => {
         console.log("watched: ", newBackground);
+        var renderer = PIXI.autoDetectRenderer();
         newBackground = require(`@/assets/stories/${storyId}/images/backgrounds/${newBackground}`);
         loader.load((loader, resources) => {
-          const background = new PIXI.Sprite(resources[newBackground].texture);
-          background.width = app.renderer.width;
-          background.height = app.renderer.height;
-          app.stage.addChild(background);
+          const nextBackground = new PIXI.Sprite(
+            resources[newBackground].texture
+          );
+          nextBackground.width = app.renderer.width;
+          nextBackground.height = app.renderer.height;
+          nextBackground.alpha = 0;
+          app.stage.addChild(nextBackground);
+          animate();
+
+          function animate() {
+            requestAnimationFrame(animate);
+            //background.alpha -= 0.01;
+            nextBackground.alpha += 0.05;
+            renderer.render(app.stage);
+          }
         });
       },
       { deep: true }

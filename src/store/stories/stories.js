@@ -65,10 +65,8 @@ export default {
         commit("saveStories", downloaded.default);
       });
       import("@/story/backgrounds.js").then(backgrounds => {
-        console.log(backgrounds.default)
         commit("saveBackgroundsPaths", backgrounds.default);
       });
-
     },
     downloadInkEngine({ commit }) {
       import("@/story/engine.js").then(downloaded => {
@@ -189,7 +187,8 @@ export default {
       !state.currentStory.variablesState["storyBought"] &&
       state.currentStory.variablesState["paymentAsked"],
     isStoryLoaded: state => !(state.currentStory == null),
-    areAssetsLoaded: state => state.assetsLoaded == state.storyId && state.pixiLoader != null,
+    areAssetsLoaded: state =>
+      state.assetsLoaded == state.storyId && state.pixiLoader != null,
     pixiLoader: state => state.pixiLoader,
     storyId: state => state.storyId,
     storyAssetsURL: state => "/assets/stories/" + state.storyId,

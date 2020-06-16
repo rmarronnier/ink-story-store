@@ -6,22 +6,16 @@ import getGlobalTagValueFromDownloaded from "./downloaded";
 // DIRTY AND WRONG : we should hard import stories.
 //var storyIds = ["gorgias", "events-tome-1"];
 
-
-
-
-
-var stories = {}
+var stories = {};
 // Get all js files under the stories folder
 
 let requireContext = require.context("@/assets/stories/", true, /\.json$/);
 // requireContext.keys() returns an array that matches the name of the successful module
-requireContext.keys().forEach((key) => {
+requireContext.keys().forEach(key => {
   // Export file content through requireContext(key)
-  const story = requireContext(key)
-  stories[getGlobalTagValueFromDownloaded(story, "storyId")] = story
-})
-
-
+  const story = requireContext(key);
+  stories[getGlobalTagValueFromDownloaded(story, "storyId")] = story;
+});
 
 // var stories = {};
 // // storyIds.forEach(storyId => {
