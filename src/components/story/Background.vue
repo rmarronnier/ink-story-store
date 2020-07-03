@@ -1,7 +1,7 @@
 <template>
   <div id="background">
+    <PixiCanvas />
     <transition name="fade" mode="out-in">
-      <PixiCanvas v-if="test" />
       <!-- <img
         v-if="this.$store.getters.backgroundImage != null"
         :src="backgroundImageURL"
@@ -9,7 +9,7 @@
         alt="background image"
       />-->
       <video
-        v-else-if="this.$store.getters.backgroundVideo != null"
+        v-if="this.$store.getters.backgroundVideo != null"
         :src="backgroundVideoURL"
         :key="backgroundVideoURL"
       ></video>
