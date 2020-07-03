@@ -3,6 +3,7 @@ import getGlobalTagValueFromDownloaded from "./downloaded";
 //import Gorgias from "@/assets/stories/gorgias/gorgias.json";
 import EventsTome1 from "@/assets/stories/events-tome-1/events-tome-1.json";
 import EventsTome2 from "@/assets/stories/events-tome-2/events-tome-2.json";
+import OnceUponAtime from "@/assets/stories/once-upon-a-time/once-upon-a-time.json";
 // DIRTY AND WRONG : we should hard import stories.
 //var storyIds = ["gorgias", "events-tome-1"];
 var stories = {};
@@ -18,6 +19,7 @@ var stories = {};
 //stories[getGlobalTagValueFromDownloaded(Gorgias, "storyId")] = Gorgias;
 stories[getGlobalTagValueFromDownloaded(EventsTome1, "storyId")] = EventsTome1;
 stories[getGlobalTagValueFromDownloaded(EventsTome2, "storyId")] = EventsTome2;
+stories[getGlobalTagValueFromDownloaded(OnceUponAtime, "storyId")] = OnceUponAtime;
 
 export default stories;
 
