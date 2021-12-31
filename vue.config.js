@@ -16,6 +16,7 @@ module.exports = {
   //       raw: true
   //     });
   // },
+  productionSourceMap: process.env.NODE_ENV == 'production',
   pwa: {
     name: AppData.longName,
     themeColor: AppData.theme_color,

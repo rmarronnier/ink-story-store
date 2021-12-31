@@ -9,7 +9,10 @@
       <article>
         <h2>{{ storyTitle(json) }}</h2>
         <p>{{ teaserText(json) }}</p>
-        <button class="lined thin" @click="choose(storyId)">Lancer l'histoire</button>
+        <button class="lined thin" @click="choose(storyId)">
+          <img src="@/assets/play_circle_filled-24px.svg" alt="Lancer" />
+          Lancer l'histoire
+        </button>
       </article>
     </section>
   </main>
@@ -139,6 +142,18 @@ main#StoryMenu {
       }
     }
     button {
+      display: flex;
+      align-content: center;
+      img {
+        height: calc(1vw + 1vh + 2vmin);
+        align-self: flex-end;
+        margin-right: 20px;
+      }
+
+      p {
+        display: block;
+      }
+
       align-self: flex-end;
       background: #4b4b2d96;
       //background:transparent;
